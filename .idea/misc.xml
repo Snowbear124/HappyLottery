@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/buttom_backup.xml" value="0.2" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/buttom_rad.xml" value="0.21574074074074073" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/button_backup_2.xml" value="0.152" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/button_blue.xml" value="0.264" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_data_name.xml" value="0.175" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_number.xml" value="0.21574074074074073" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_set.xml" value="0.21296296296296297" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_set_button.xml" value="0.1712962962962963" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_start_buttom.xml" value="0.21574074074074073" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/lotteryball_blue.xml" value="0.21296296296296297" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/lotteryball_green.xml" value="0.21296296296296297" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/lotteryball_rad.xml" value="0.21296296296296297" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/lotteryball_yellow.xml" value="0.21296296296296297" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/activity_main.xml" value="0.24114583333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
