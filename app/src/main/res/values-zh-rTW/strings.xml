@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HappyLottery</string>
+    <string name="start">開始</string>
+    <string name="set">設定</string>
+    <string name="data_1">檔案 1</string>
+</resources>

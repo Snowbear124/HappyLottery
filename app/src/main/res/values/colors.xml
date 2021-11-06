@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
 
     <color name="BabyBlue">#A2D2FF</color>
     <color name="OldLace">#FEF9EF</color>
@@ -25,4 +26,6 @@
     <color name="AdventureOfTheSeas">#2F5EA9</color>
     <color name="Picnic">#94C78A</color>
     <color name="BeerGarden">#3D9F38</color>
+
+    <color name="DiamondLeague">#CEE9F2</color>
 </resources>
