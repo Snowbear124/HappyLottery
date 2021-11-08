@@ -3,4 +3,11 @@
     <string name="start">START</string>
     <string name="set">SET</string>
     <string name="data_1">Data 1</string>
+    <string name="data_set">DATA SET</string>
+    <string name="item_repeat">ITEM REPEAT</string>
+    <string name="language">LANGUAGE</string>
+    <string name="exit">EXIT</string>
+    <string name="data_2">DATA 2</string>
+    <string name="data_3">DATA 3</string>
+    <string name="data_4">DATA 4</string>
 </resources>

@@ -28,6 +28,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/button_set"
+        android:onClick="setActivity"
         android:text="@string/set"
         android:textSize="@dimen/sp_24"
         app:layout_constraintEnd_toEndOf="parent"

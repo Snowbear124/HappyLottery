@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/OldLace"
+    tools:context=".DataActivity">
+
+    <Button
+        android:id="@+id/data_title"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/item_set"
+        android:text="@string/data_set"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/data_1"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/item_data_name"
+        android:text="@string/data_1"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data_title" />
+
+    <Button
+        android:id="@+id/data_2"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/item_data_name"
+        android:text="@string/data_2"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data_1" />
+
+    <Button
+        android:id="@+id/data_3"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/item_data_name"
+        android:text="@string/data_3"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data_2" />
+
+    <Button
+        android:id="@+id/data_4"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/item_data_name"
+        android:text="@string/data_4"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data_3" />
+
+    <Button
+        android:id="@+id/but_back"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp_185"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_start_2"
+        android:text="Back"
+        android:textSize="@dimen/sp_38"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

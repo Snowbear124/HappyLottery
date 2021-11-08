@@ -4,4 +4,8 @@
     <string name="start">開始</string>
     <string name="set">設定</string>
     <string name="data_1">檔案 1</string>
+    <string name="data_set">選項設定</string>
+    <string name="item_repeat">選項重複</string>
+    <string name="language">語言</string>
+    <string name="exit">離開</string>
 </resources>
