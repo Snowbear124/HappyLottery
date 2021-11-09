@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/bottom_line.xml" value="0.13697916666666668" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/buttom_backup.xml" value="0.2" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/buttom_rad.xml" value="0.21574074074074073" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/button_backup.xml" value="0.12864583333333332" />
@@ -11,6 +12,8 @@
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/button_set.xml" value="0.2041025641025641" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/button_start.xml" value="0.2074074074074074" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/button_start_2.xml" value="0.2074074074074074" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/ic_baseline_filter.xml" value="0.22870370370370371" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_data.xml" value="0.22870370370370371" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_data_name.xml" value="0.175" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_number.xml" value="0.21574074074074073" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/item_set.xml" value="0.21296296296296297" />
@@ -24,13 +27,13 @@
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/switch_thumb.xml" value="0.2074074074074074" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/drawable/switch_track.xml" value="0.2074074074074074" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/activity_data.xml" value="0.24114583333333334" />
-        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/activity_data_item_set.xml" value="0.24114583333333334" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/activity_data_item_set.xml" value="0.2" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/activity_main.xml" value="0.21920289855072464" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/activity_set.xml" value="0.22447916666666667" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/first_main.xml" value="0.19114583333333332" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/frist_main.xml" value="0.1125" />
         <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/set.xml" value="0.24114583333333334" />
-        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/test.xml" value="0.24114583333333334" />
+        <entry key="..\:/MyProject/KotlinApp/HappyLottery/app/src/main/res/layout/test.xml" value="0.264" />
       </map>
     </option>
   </component>

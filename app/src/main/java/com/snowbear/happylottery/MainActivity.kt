@@ -14,8 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate: ")
-        setContentView(R.layout.activity_main)
-//        setContentView(R.layout.activity_data)
+//        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_data_item_set)
+        setContentView(R.layout.test)
     }
 
     fun lottery(view: View) {
