@@ -20,6 +20,7 @@
             android:layout_gravity="center"
             android:background="@drawable/item_set"
             android:gravity="center"
+            android:onClick="But"
             android:text="TITLE"
             android:textSize="@dimen/sp_32"
             tools:layout_editor_absoluteX="45dp"

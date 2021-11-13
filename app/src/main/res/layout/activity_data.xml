@@ -7,7 +7,7 @@
     android:background="@color/OldLace"
     tools:context=".DataActivity">
 
-    <Button
+    <TextView
         android:id="@+id/data_title"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="@dimen/dp_280"

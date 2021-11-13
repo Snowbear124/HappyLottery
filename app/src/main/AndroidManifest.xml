@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HappyLottery">
         <activity
+            android:name=".LotteryResultActivity"
+            android:exported="true" />
+        <activity
             android:name=".DataItemSet"
             android:exported="true" />
         <activity

@@ -10,7 +10,248 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="147dp"
-            android:orientation="vertical"></LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+                <Button
+                    android:id="@+id/data_name"
+                    android:layout_width="@dimen/dp_280"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginTop="42dp"
+                    android:background="@drawable/item_data_name"
+                    android:text="@string/data_1"
+                    android:textSize="@dimen/sp_28"
+                    android:gravity="center"
+                    android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                                <Button
+                                    android:id="@+id/data_save"
+                                    android:layout_width="@dimen/dp_130"
+                                    android:layout_height="@dimen/dp_70"
+                                    android:layout_marginEnd="24dp"
+                                    android:layout_marginTop="24dp"
+                                    android:background="@drawable/button_rad"
+                                    android:text="SAVE"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_28"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/itemDate_6" />
+
+                                <Button
+                                    android:id="@+id/data_switch"
+                                    android:layout_width="@dimen/dp_130"
+                                    android:layout_height="@dimen/dp_70"
+                                    android:layout_marginStart="24dp"
+                                    android:background="@drawable/button_blue"
+                                    android:onClick="backUp"
+                                    android:text="CANCEL"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_28"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/data_save" />
+
+                                <EditText
+                                    android:id="@+id/itemDate_1"
+                                    android:layout_width="@dimen/dp_220"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:layout_marginEnd="44dp"
+                                    android:layout_marginTop="32dp"
+                                    android:background="@drawable/item_data"
+                                    android:drawableBottom="@drawable/bottom_line"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="date"
+                                    android:text="Apply"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/sp_36"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/data_name" />
+
+                                <EditText
+                                    android:id="@+id/itemDate_2"
+                                    android:layout_width="@dimen/dp_220"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:layout_marginEnd="44dp"
+                                    android:layout_marginTop="32dp"
+                                    android:background="@drawable/item_data"
+                                    android:drawableBottom="@drawable/bottom_line"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="date"
+                                    android:text="Banana"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/sp_36"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/itemDate_1" />
+
+                                <EditText
+                                    android:id="@+id/itemDate_3"
+                                    android:layout_width="@dimen/dp_220"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:layout_marginEnd="44dp"
+                                    android:layout_marginTop="32dp"
+                                    android:background="@drawable/item_data"
+                                    android:drawableBottom="@drawable/bottom_line"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="date"
+                                    android:text="Cherry"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/sp_36"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/itemDate_2" />
+
+                                <EditText
+                                    android:id="@+id/itemDate_4"
+                                    android:layout_width="@dimen/dp_220"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:layout_marginEnd="44dp"
+                                    android:layout_marginTop="32dp"
+                                    android:background="@drawable/item_data"
+                                    android:drawableBottom="@drawable/bottom_line"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="date"
+                                    android:text="Dragonfruit"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/sp_36"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/itemDate_3" />
+
+                                <EditText
+                                    android:id="@+id/itemDate_5"
+                                    android:layout_width="@dimen/dp_220"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:layout_marginEnd="44dp"
+                                    android:layout_marginTop="32dp"
+                                    android:background="@drawable/item_data"
+                                    android:drawableBottom="@drawable/bottom_line"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="date"
+                                    android:text="Fig"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/sp_36"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/itemDate_4" />
+
+                                <EditText
+                                    android:id="@+id/itemDate_6"
+                                    android:layout_width="@dimen/dp_220"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:layout_marginEnd="44dp"
+                                    android:layout_marginTop="32dp"
+                                    android:background="@drawable/item_data"
+                                    android:drawableBottom="@drawable/bottom_line"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:inputType="date"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/sp_36"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/itemDate_5" />
+
+                                <TextView
+                                    android:id="@+id/itemNumber_1"
+                                    android:layout_width="@dimen/dp_60"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:background="@drawable/item_number"
+                                    android:gravity="center"
+                                    android:text="1"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_42"
+                                    app:layout_constraintEnd_toStartOf="@+id/itemDate_1"
+                                    app:layout_constraintHorizontal_bias="0.978"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/itemDate_1" />
+
+                                <TextView
+                                    android:id="@+id/itemNumber_2"
+                                    android:layout_width="@dimen/dp_60"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:background="@drawable/item_number"
+                                    android:gravity="center"
+                                    android:text="2"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_42"
+                                    app:layout_constraintEnd_toStartOf="@+id/itemDate_1"
+                                    app:layout_constraintHorizontal_bias="0.978"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/itemDate_2" />
+
+                                <TextView
+                                    android:id="@+id/itemNumber_3"
+                                    android:layout_width="@dimen/dp_60"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:background="@drawable/item_number"
+                                    android:gravity="center"
+                                    android:text="3"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_42"
+                                    app:layout_constraintEnd_toStartOf="@+id/itemDate_2"
+                                    app:layout_constraintHorizontal_bias="0.978"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/itemDate_3" />
+
+                                <TextView
+                                    android:id="@+id/itemNumber_4"
+                                    android:layout_width="@dimen/dp_60"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:background="@drawable/item_number"
+                                    android:gravity="center"
+                                    android:text="4"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_42"
+                                    app:layout_constraintEnd_toStartOf="@+id/itemDate_3"
+                                    app:layout_constraintHorizontal_bias="0.978"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/itemDate_4" />
+
+                                <TextView
+                                    android:id="@+id/itemNumber_5"
+                                    android:layout_width="@dimen/dp_60"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:background="@drawable/item_number"
+                                    android:gravity="center"
+                                    android:text="5"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_42"
+                                    app:layout_constraintEnd_toStartOf="@+id/itemDate_4"
+                                    app:layout_constraintHorizontal_bias="0.978"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/itemDate_5" />
+
+                                <TextView
+                                    android:id="@+id/itemNumber_6"
+                                    android:layout_width="@dimen/dp_60"
+                                    android:layout_height="@dimen/dp_60"
+                                    android:background="@drawable/item_number"
+                                    android:gravity="center"
+                                    android:text="6"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_42"
+                                    app:layout_constraintEnd_toStartOf="@+id/itemDate_5"
+                                    app:layout_constraintHorizontal_bias="0.978"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/itemDate_6" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                </ScrollView>
+        </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>
