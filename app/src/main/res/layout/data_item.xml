@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/OldLace">
+
+    <EditText
+        android:id="@+id/itemDate"
+        android:layout_width="@dimen/dp_220"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/item_data"
+        android:drawableBottom="@drawable/bottom_line"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="date"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_36"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemNumber"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:background="@drawable/item_number"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_42"
+        app:layout_constraintEnd_toStartOf="@+id/itemDate"
+        app:layout_constraintTop_toTopOf="@+id/itemDate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

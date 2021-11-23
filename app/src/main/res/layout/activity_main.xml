@@ -41,6 +41,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/item_data_name"
         android:text="@string/data_1"
+        android:textAllCaps="false"
         android:textSize="@dimen/sp_38"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

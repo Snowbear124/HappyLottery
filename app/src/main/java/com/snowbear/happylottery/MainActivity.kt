@@ -3,6 +3,7 @@ package com.snowbear.happylottery
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextWatcher
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -13,70 +14,111 @@ class MainActivity : AppCompatActivity() {
     val TAG = MainActivity::class.java.simpleName
     val intentMainActivity = Intent()
     val testList = listOf<String>("Apply","Banana","Cherry","Dragonfruit","Fig")
-    var butTouchSize = 0.9f
-    var butUpSize = 1f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate: ")
+//        Log.d(TAG, "onCreate: ")
         setContentView(R.layout.activity_main)
-//        setContentView(R.layout.set)
-//        setContentView(R.layout.test)
 
-        val dataName = findViewById<Button>(R.id.data_name)
-        val intentDataActivity = Intent(this, DataActivity::class.java)
-        dataName.setOnClickListener{
-            startActivity(intentDataActivity)
+        val but_dataName = findViewById<Button>(R.id.data_name)
+        val but_start = findViewById<Button>(R.id.but_start)
+        val but_lottery = findViewById<Button>(R.id.but_lottery)
+        val but_set = findViewById<Button>(R.id.but_set)
+        val intentMainActivity = Intent()
+
+        but_dataName.setOnTouchListener(butAction)
+        but_lottery.setOnTouchListener(butAction)
+        but_set.setOnTouchListener(butAction)
+        but_start.setOnTouchListener(butAction)
+
+        val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
+        val shareData_1 = getSharedPreferences("data_1", MODE_PRIVATE)
+        val shareData_2 = getSharedPreferences("data_2", MODE_PRIVATE)
+        val shareData_3 = getSharedPreferences("data_3", MODE_PRIVATE)
+        val shareData_4 = getSharedPreferences("data_4", MODE_PRIVATE)
+
+        val data_state: Int = shareLogin.getInt("data_state", 1)
+        Log.d(TAG, "data_state: $data_state")
+
+        if(data_state == 1) {
+            val dataName = shareData_1.getString("dataName", "DATA 1")
+            but_dataName.setText(dataName)
+
+        }else if(data_state == 2) {
+            val dataName = shareData_2.getString("dataName", "DATA 2")
+            but_dataName.setText(dataName)
+
+        }else if(data_state == 3) {
+            val dataName = shareData_3.getString("dataName", "DATA 3")
+            but_dataName.setText(dataName)
+
+        }else if(data_state == 4) {
+            val dataName = shareData_4.getString("dataName", "DATA 4")
+            but_dataName.setText(dataName)
+
+        }else {
+            but_dataName.setText("No find data")
         }
-    }
 
-//Activity週期變化顯示---------------------------------------------------
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart: ")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume: ")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause: ")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop: ")
+        but_dataName.setOnClickListener{
+            intentMainActivity.setClass(this, DataActivity::class.java)
+            startActivity(intentMainActivity)
+        }
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.d(TAG, "onRestart: ")
+//        Log.d(TAG, "onRestart: ")
+
+        val but_dataName = findViewById<Button>(R.id.data_name)
+        val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
+        val shareData_1 = getSharedPreferences("data_1", MODE_PRIVATE)
+        val shareData_2 = getSharedPreferences("data_2", MODE_PRIVATE)
+        val shareData_3 = getSharedPreferences("data_3", MODE_PRIVATE)
+        val shareData_4 = getSharedPreferences("data_4", MODE_PRIVATE)
+
+        val data_state = shareLogin.getInt("data_state", 1)
+        Log.d(TAG, "Data state: ${shareLogin.getInt("data_state", 1)}")
+
+        if(data_state == 1) {
+            val dataName = shareData_1.getString("dataName", "DATA 1")
+            but_dataName.setText(dataName)
+
+        }else if(data_state == 2) {
+            val dataName = shareData_2.getString("dataName", "DATA 2")
+            but_dataName.setText(dataName)
+
+        }else if(data_state == 3) {
+            val dataName = shareData_3.getString("dataName", "DATA 3")
+            but_dataName.setText(dataName)
+
+        }else if(data_state == 4) {
+            val dataName = shareData_4.getString("dataName", "DATA 4")
+            but_dataName.setText(dataName)
+
+        }else {
+            but_dataName.setText("No find data")
+        }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "onDestroy: ")
+    //按鈕按壓時的大小變化
+    val butAction = object: View.OnTouchListener{
+        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+            when(event?.action) {
+                MotionEvent.ACTION_DOWN ->
+                    v?.animate()?.scaleX(0.85f)?.scaleY(0.85f)?.setDuration(150)?.start()
+                MotionEvent.ACTION_UP ->
+                    v?.animate()?.scaleX(1f)?.scaleY(1f)?.setDuration(150)?.start()
+            }
+            return false
+        }
     }
-//--------------------------------------------------------------
 
     fun lottery(view: View) {
 //        intentMainActivity.setClass()
 
         val item = testList.random()
         Log.d(TAG,"Lottery Item = $item")    //標籤，這裡做debug用
-
-        //按鈕按壓時的大小變化(測試中，目前地一下不會有動作)
-//        view.setOnTouchListener { _, event ->
-//            if (event.action == MotionEvent.ACTION_DOWN)
-//                view.animate().scaleX(butTouchSize).scaleY(butTouchSize).setDuration(150).start()
-//            if (event.action == MotionEvent.ACTION_UP)
-//                view.animate().scaleX(butUpSize).scaleY(butUpSize).setDuration(150).start()
-//            false
-//            //回傳false表示傳送完一次資料後，就重製，使按鈕可以一直傳送資料；若是用true，表示按鈕只傳用一次就完成工作
-//        }
     }
 
     fun setActivity(view: View) {
@@ -85,4 +127,31 @@ class MainActivity : AppCompatActivity() {
         startActivity(intentSetActivity)    // startActivity指開啟()內的介面
     }
 
+//Activity週期變化顯示---------------------------------------------------
+//    override fun onStart() {
+//        super.onStart()
+//        Log.d(TAG, "onStart: ")
+//    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//        Log.d(TAG, "onResume: ")
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        Log.d(TAG, "onPause: ")
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        Log.d(TAG, "onStop: ")
+//    }
+//
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        Log.d(TAG, "onDestroy: ")
+//    }
+//--------------------------------------------------------------
 }
