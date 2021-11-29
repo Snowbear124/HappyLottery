@@ -9,19 +9,22 @@
 
     <TextView
         android:id="@+id/data_title"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="@dimen/dp_280"
         android:layout_height="@dimen/dp_60"
         android:layout_marginTop="42dp"
         android:background="@drawable/item_set"
         android:text="@string/data_set"
         android:textSize="@dimen/sp_28"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/data_1"
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_60"
@@ -35,6 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/data_title" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/set_1"
         android:layout_width="@dimen/dp_120"
         android:layout_height="@dimen/dp_60"
@@ -47,6 +51,7 @@
         app:layout_constraintTop_toTopOf="@+id/data_1" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/data_2"
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_60"
@@ -60,6 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/data_1" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/set_2"
         android:layout_width="@dimen/dp_120"
         android:layout_height="@dimen/dp_60"
@@ -72,6 +78,7 @@
         app:layout_constraintTop_toTopOf="@+id/data_2" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/data_3"
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_60"
@@ -85,6 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/data_2" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/set_3"
         android:layout_width="@dimen/dp_120"
         android:layout_height="@dimen/dp_60"
@@ -97,6 +105,7 @@
         app:layout_constraintTop_toTopOf="@+id/data_3" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/data_4"
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_60"
@@ -110,6 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/data_3" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/set_4"
         android:layout_width="@dimen/dp_120"
         android:layout_height="@dimen/dp_60"
@@ -122,8 +132,8 @@
         app:layout_constraintTop_toTopOf="@+id/data_4" />
 
     <Button
-        android:id="@+id/but_back"
         style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/but_back"
         android:layout_width="@dimen/dp_185"
         android:layout_height="@dimen/dp_70"
         android:layout_marginBottom="24dp"

@@ -6,8 +6,20 @@
     android:layout_height="wrap_content"
     android:background="@color/OldLace">
 
+    <TextView
+        android:id="@+id/item_number"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:background="@drawable/item_number"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_42"
+        app:layout_constraintEnd_toStartOf="@+id/item_date"
+        app:layout_constraintTop_toTopOf="@+id/item_date" />
+
     <EditText
-        android:id="@+id/itemDate"
+        android:id="@+id/item_date"
         android:layout_width="@dimen/dp_220"
         android:layout_height="@dimen/dp_60"
         android:layout_marginBottom="16dp"
@@ -19,23 +31,12 @@
         android:gravity="center"
         android:inputType="date"
         android:text=""
+        android:maxLines="1"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_36"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/itemNumber"
-        android:layout_width="@dimen/dp_60"
-        android:layout_height="@dimen/dp_60"
-        android:background="@drawable/item_number"
-        android:gravity="center"
-        android:text="1"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_42"
-        app:layout_constraintEnd_toStartOf="@+id/itemDate"
-        app:layout_constraintTop_toTopOf="@+id/itemDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

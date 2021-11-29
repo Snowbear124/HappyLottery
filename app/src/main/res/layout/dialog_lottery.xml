@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white_10"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/but_lottery"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dp_340"
-        android:layout_height="@dimen/dp_340"
-        android:background="@drawable/lottery_glassball"
-        android:text="動畫"
-        android:textSize="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black_50"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/glass_ball"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp_340"
+            android:layout_height="@dimen/dp_340"
+            android:background="@drawable/lottery_glassball"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.304"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.472" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/ball_1"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginBottom="136dp"
+            android:layout_marginEnd="136dp"
+            android:background="@drawable/lotteryball_green"
+            app:layout_constraintBottom_toBottomOf="@+id/glass_ball"
+            app:layout_constraintEnd_toEndOf="@+id/glass_ball" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -5,15 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextWatcher
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class MainActivity : AppCompatActivity() {
     //也可以直接用"MainActivity"字串，但用class這個方式不占記憶體空間，會比較好
     val TAG = MainActivity::class.java.simpleName
     val intentMainActivity = Intent()
     val testList = listOf<String>("Apply","Banana","Cherry","Dragonfruit","Fig")
+    val itemList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +67,16 @@ class MainActivity : AppCompatActivity() {
         but_dataName.setOnClickListener{
             intentMainActivity.setClass(this, DataActivity::class.java)
             startActivity(intentMainActivity)
+        }
+
+        val viewLottery = LayoutInflater.from(this).inflate(R.layout.dialog_lottery, null, false)
+        val layout = findViewById<ConstraintLayout>(R.id.main_layout)
+
+        but_lottery.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(this)
+            val dialog = alertDialog.show()
+//            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         }
     }
 
@@ -117,8 +131,8 @@ class MainActivity : AppCompatActivity() {
     fun lottery(view: View) {
 //        intentMainActivity.setClass()
 
-        val item = testList.random()
-        Log.d(TAG,"Lottery Item = $item")    //標籤，這裡做debug用
+//        val item = testList.random()
+//        Log.d(TAG,"Lottery Item = $item")    //標籤，這裡做debug用
     }
 
     fun setActivity(view: View) {
@@ -147,7 +161,6 @@ class MainActivity : AppCompatActivity() {
 //        super.onStop()
 //        Log.d(TAG, "onStop: ")
 //    }
-//
 //
 //    override fun onDestroy() {
 //        super.onDestroy()

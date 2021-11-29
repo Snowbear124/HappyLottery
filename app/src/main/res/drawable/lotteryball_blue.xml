@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval" >
     <solid android:color="@color/SailIntoTheHorizon" />
-    <stroke android:color="@color/AdventureOfTheSeas" android:width="6dp" />
+    <stroke android:color="@color/AdventureOfTheSeas" android:width="3dp" />
 </shape>

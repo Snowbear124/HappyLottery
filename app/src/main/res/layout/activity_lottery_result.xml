@@ -8,6 +8,7 @@
     tools:context=".LotteryResultActivity">
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/but_set"
         android:layout_width="@dimen/dp_105"
         android:layout_height="@dimen/dp_50"
@@ -21,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/data_name"
         android:layout_width="@dimen/dp_250"
         android:layout_height="@dimen/dp_70"
@@ -33,8 +35,8 @@
         app:layout_constraintTop_toBottomOf="@+id/but_set" />
 
     <Button
-        android:id="@+id/but_lottery"
         style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/but_lottery"
         android:layout_width="@dimen/dp_250"
         android:layout_height="@dimen/dp_250"
         android:background="@drawable/lotteryball_green"
@@ -50,8 +52,8 @@
         app:layout_constraintTop_toBottomOf="@+id/data_name" />
 
     <Button
-        android:id="@+id/but_again"
         style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/but_again"
         android:layout_width="@dimen/dp_185"
         android:layout_height="@dimen/dp_70"
         android:layout_marginBottom="32dp"

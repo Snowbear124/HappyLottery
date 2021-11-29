@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation
 import android.provider.ContactsContract
+import android.text.Layout
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,15 +19,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
-class DataItemSet : AppCompatActivity() {
+open class DataItemSet : AppCompatActivity() {
     val TAG = DataItemSet::class.java.simpleName
-//    val intentActivity = Intent()
-//    var intentDataName = ""
+    var datas = mutableListOf<String>()
+    val itemCount = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,24 +45,30 @@ class DataItemSet : AppCompatActivity() {
         val data_name = findViewById<Button>(R.id.data_name)
         data_name.setOnTouchListener(butAction)
 
+        itemAdd(itemCount)  //item的數量
+
         if(data_state == 1) {
             val dataName = shareData_1.getString("dataName", "DATA 1")
             data_name.setText(dataName)
+            getItem(shareData_1)
 //            Log.d(TAG, "Data name: ${data_name.text}")
 
         }else if(data_state == 2) {
             val dataName = shareData_2.getString("dataName", "DATA 2")
             data_name.setText(dataName)
+            getItem(shareData_2)
 //            Log.d(TAG, "Data name: ${data_name.text}")
 
         }else if(data_state == 3) {
             val dataName = shareData_3.getString("dataName", "DATA 3")
             data_name.setText(dataName)
+            getItem(shareData_3)
 //            Log.d(TAG, "Data name: ${data_name.text}")
 
         }else if(data_state == 4) {
             val dataName = shareData_4.getString("dataName", "DATA 4")
             data_name.setText(dataName)
+            getItem(shareData_4)
 //            Log.d(TAG, "Data name: ${data_name.text}")
 
         }else {
@@ -112,24 +120,32 @@ class DataItemSet : AppCompatActivity() {
                 shareData_1.edit().putString("dataName", dataText).apply()
                 Log.d(TAG, "Save data 1: ${dataText}")
 
+                saveItem(shareData_1)
+
             }else if(data_state == 2) {
                 shareData_2.edit().putString("dataName", dataText).apply()
                 Log.d(TAG, "Save data 2: ${dataText}")
+
+                saveItem(shareData_2)
 
             }else if(data_state == 3) {
                 shareData_3.edit().putString("dataName", dataText).apply()
                 Log.d(TAG, "Save data 3: ${dataText}")
 
+                saveItem(shareData_3)
+
             }else if(data_state == 4) {
                 shareData_4.edit().putString("dataName", dataText).apply()
                 Log.d(TAG, "Save data 4: ${dataText}")
+
+                saveItem(shareData_4)
             }
             finish()
         }
-    }
 
-    fun backUp(view: View) {
-        finish() //關閉Activity介面
+        but_cancel.setOnClickListener{
+            finish()    //關閉Activity介面
+        }
     }
 
     //按鈕按壓時的大小變化
@@ -142,6 +158,48 @@ class DataItemSet : AppCompatActivity() {
                     v?.animate()?.scaleX(1f)?.scaleY(1f)?.setDuration(150)?.start()
             }
             return false
+        }
+    }
+
+    val itemViewList = mutableListOf<View>()
+    val itemEditList = mutableListOf<EditText>()
+    val itemNumberList = mutableListOf<TextView>()
+
+    fun itemAdd(count: Int) {
+        val layout_item = findViewById<LinearLayout>(R.id.layout_item)
+        var itemCount = count
+
+        for (x in 0..itemCount-1) { //指定id
+            itemViewList.add( //加到layout裡的data_item
+                LayoutInflater.from(this@DataItemSet)
+                    .inflate(R.layout.data_item, null, false)
+            )
+            itemEditList.add(itemViewList.get(x).findViewById(R.id.item_date))  //取得各個view, edit的資料id
+            itemNumberList.add(itemViewList.get(x).findViewById(R.id.item_number))  //取得各個view, 開頭數字的id
+        }
+
+        for (x in 0..itemCount-1) { //介面顯示
+            layout_item.addView(itemViewList.get(x))
+            itemNumberList.get(x).setText((x+1).toString())
+        }
+    }
+
+    fun getItem(shareData: SharedPreferences) { //讀取資料
+        for (x in 0..itemViewList.size-1) {
+            val getData = shareData.getString("item_${x+1}", "")
+            itemEditList.get(x).setText(getData)
+        }
+    }
+
+    fun saveItem(shareData: SharedPreferences) {    //儲存資料
+        for (x in 0..itemViewList.size-1) {
+            val text = itemEditList.get(x).text
+            shareData.edit().putString("item_${x+1}", text.toString()).apply()
+//            if(text.length > 0) {
+//                Log.d(TAG, "saveItem_${x+1}: ${text}")
+//            }else {
+//                Log.d(TAG, "saveItem_${x+1}: empty")
+//            }
         }
     }
 
@@ -176,4 +234,8 @@ class DataItemSet : AppCompatActivity() {
 //        Log.d(TAG, "onDestroy: ")
 //    }
 //--------------------------------------------------------------
+}
+
+class DataItem(){
+
 }

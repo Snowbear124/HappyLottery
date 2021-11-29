@@ -7,8 +7,8 @@
     android:background="@color/SandCrystal">
 
     <Button
-        android:id="@+id/set_exit"
         style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/set_exit"
         android:layout_width="@dimen/dp_280"
         android:layout_height="@dimen/dp_60"
         android:layout_marginTop="32dp"
@@ -20,8 +20,8 @@
         app:layout_constraintTop_toBottomOf="@+id/set_language" />
 
     <Button
-        android:id="@+id/set_language"
         style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/set_language"
         android:layout_width="@dimen/dp_280"
         android:layout_height="@dimen/dp_60"
         android:layout_marginTop="32dp"
@@ -34,20 +34,22 @@
 
     <TextView
         android:id="@+id/set_title"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="@dimen/dp_280"
         android:layout_height="@dimen/dp_60"
         android:layout_marginTop="42dp"
         android:background="@drawable/item_set"
         android:text="@string/set"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="@dimen/sp_28"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/set_data"
         style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/set_data"
         android:layout_width="@dimen/dp_280"
         android:layout_height="@dimen/dp_60"
         android:layout_marginTop="32dp"
@@ -83,6 +85,7 @@
             app:layout_constraintTop_toTopOf="@+id/switch_item_re" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/set_back"
         android:layout_width="247dp"
         android:layout_height="65dp"

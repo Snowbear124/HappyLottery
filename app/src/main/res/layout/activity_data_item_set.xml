@@ -8,6 +8,7 @@
     tools:context=".DataItemSet">
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/data_name"
             android:layout_width="@dimen/dp_280"
             android:layout_height="@dimen/dp_60"
@@ -25,6 +26,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/data_save"
             android:layout_width="@dimen/dp_130"
             android:layout_height="@dimen/dp_70"
@@ -39,14 +41,14 @@
 
         <Button
             android:id="@+id/data_cancel"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/dp_130"
             android:layout_height="@dimen/dp_70"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="25dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25dp"
             android:background="@drawable/button_blue"
-            android:onClick="backUp"
             android:text="CANCEL"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_28" />
@@ -65,9 +67,10 @@
                     android:layout_height="match_parent">
 
                         <LinearLayout
+                            android:id="@+id/layout_item"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical" ></LinearLayout>
+                            android:orientation="vertical"></LinearLayout>
                 </ScrollView>
         </RelativeLayout>
 </RelativeLayout>

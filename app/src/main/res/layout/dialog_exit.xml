@@ -30,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/but_no"
             android:layout_width="@dimen/dp_140"
             android:layout_height="@dimen/dp_60"
@@ -42,6 +43,7 @@
             app:layout_constraintTop_toTopOf="@+id/but_yes" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/but_yes"
             android:layout_width="@dimen/dp_140"
             android:layout_height="@dimen/dp_60"
