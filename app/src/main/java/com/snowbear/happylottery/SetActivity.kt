@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.Switch
 import androidx.appcompat.app.AlertDialog
 
 class SetActivity : AppCompatActivity() {
@@ -23,24 +24,33 @@ class SetActivity : AppCompatActivity() {
         val set_back = findViewById<Button>(R.id.set_back)
         val set_language = findViewById<Button>(R.id.set_language)
         val set_exit = findViewById<Button>(R.id.set_exit)
+        val set_switch = findViewById<Switch>(R.id.switch_item_re)
 
         set_data.setOnTouchListener(butAction)
         set_language.setOnTouchListener(butAction)
         set_exit.setOnTouchListener(butAction)
+        set_back.setOnTouchListener(butAction)
 
         set_data.setOnClickListener {
             val intentDataActivity = intentActivity.setClass(this, DataActivity::class.java)
             startActivity(intentDataActivity)
         }
 
+        set_switch.setOnCheckedChangeListener { compoundButton, b ->  }
+
         set_exit.setOnClickListener {
+
+        }
+
+        set_back.setOnClickListener{
+            finish()
         }
 
     }
 
-    fun backUp(view: View) {
-        finish() //關閉Activity介面
-    }
+//    fun backUp(view: View) {
+//        finish() //關閉Activity介面
+//    }
 
     //按鈕按壓時的大小變化
     val butAction = object: View.OnTouchListener{

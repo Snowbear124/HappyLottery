@@ -3,8 +3,8 @@
     <item android:state_checked="true">
         <shape android:shape="oval">
             <solid android:color="@color/white_80"/>
-            <size android:height="@dimen/dp_60"
-                android:width="@dimen/dp_60" />
+            <size android:height="@dimen/dp_65"
+                android:width="@dimen/dp_65" />
             <stroke android:width="8dp"
                 android:color="@color/Picnic" />
         </shape>
@@ -12,8 +12,8 @@
     <item android:state_checked="false">
         <shape android:shape="oval">
             <solid android:color="@color/white_80"/>
-            <size android:height="@dimen/dp_60"
-                android:width="@dimen/dp_60" />
+            <size android:height="@dimen/dp_65"
+                android:width="@dimen/dp_65" />
             <stroke android:width="8dp"
                 android:color="@color/AdventureOfTheSeas" />
         </shape>

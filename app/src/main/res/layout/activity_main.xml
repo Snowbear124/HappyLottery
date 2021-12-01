@@ -23,16 +23,16 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/but_set"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="@dimen/dp_105"
         android:layout_height="@dimen/dp_50"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/button_set"
-        android:onClick="setActivity"
         android:text="@string/set"
         android:textSize="@dimen/sp_24"
+        android:transitionName="set_trsnsition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,17 +50,59 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/but_set" />
 
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/but_lottery"
-        android:layout_width="@dimen/dp_290"
-        android:layout_height="@dimen/dp_290"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/lottery_glassball"
-        android:onClick="lottery"
-        android:text=""
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/but_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/data_name" />
+        app:layout_constraintTop_toBottomOf="@+id/data_name">
+
+        <Button
+            android:visibility="visible"
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/but_lottery"
+            android:layout_width="@dimen/dp_290"
+            android:layout_height="@dimen/dp_290"
+            android:background="@drawable/lottrey_start"
+            android:text="" />
+
+        <LinearLayout
+            android:id="@+id/layout_lottery_result"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/but_lottery_result"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_200"
+                android:layout_gravity="center"
+                android:background="@drawable/lotteryball_green"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_140"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tV_lottery_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="Apple"
+                android:textColor="@color/DuckSauce"
+                android:textSize="@dimen/dp_64"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

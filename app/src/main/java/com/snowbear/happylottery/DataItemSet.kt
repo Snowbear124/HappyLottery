@@ -25,10 +25,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
-open class DataItemSet : AppCompatActivity() {
+class DataItemSet : AppCompatActivity() {
     val TAG = DataItemSet::class.java.simpleName
     var datas = mutableListOf<String>()
-    val itemCount = 10
+    var itemCount = GlobalVariable.getItemCount()   //  itemCount = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

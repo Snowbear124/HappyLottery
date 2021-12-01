@@ -12,10 +12,10 @@ import android.widget.Button
 import android.widget.TextView
 
 class DataActivity : AppCompatActivity() {
-    private val REQUEST_RECODE_1 = 1
-    private val REQUEST_RECODE_2 = 2
-    private val REQUEST_RECODE_3 = 3
-    private val REQUEST_RECODE_4 = 4
+//    private val REQUEST_RECODE_1 = 1
+//    private val REQUEST_RECODE_2 = 2
+//    private val REQUEST_RECODE_3 = 3
+//    private val REQUEST_RECODE_4 = 4
     val TAG = DataActivity::class.java.simpleName
     val intentActivity = Intent()
     var dataNameMap = mutableMapOf<Int, String>()
