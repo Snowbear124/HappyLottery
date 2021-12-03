@@ -33,15 +33,15 @@ class DataActivity : AppCompatActivity() {
         val set_4 = findViewById<Button>(R.id.set_4)
         val but_back = findViewById<Button>(R.id.but_back)
 
-        data_1.setOnTouchListener(butAction)
-        data_2.setOnTouchListener(butAction)
-        data_3.setOnTouchListener(butAction)
-        data_4.setOnTouchListener(butAction)
-        set_1.setOnTouchListener(butAction)
-        set_2.setOnTouchListener(butAction)
-        set_3.setOnTouchListener(butAction)
-        set_4.setOnTouchListener(butAction)
-        but_back.setOnTouchListener(butAction)
+        data_1.setOnTouchListener(GlobalVariable().butAction)
+        data_2.setOnTouchListener(GlobalVariable().butAction)
+        data_3.setOnTouchListener(GlobalVariable().butAction)
+        data_4.setOnTouchListener(GlobalVariable().butAction)
+        set_1.setOnTouchListener(GlobalVariable().butAction)
+        set_2.setOnTouchListener(GlobalVariable().butAction)
+        set_3.setOnTouchListener(GlobalVariable().butAction)
+        set_4.setOnTouchListener(GlobalVariable().butAction)
+        but_back.setOnTouchListener(GlobalVariable().butAction)
 
         val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
         val shareData_1 = getSharedPreferences("data_1", MODE_PRIVATE)
@@ -142,19 +142,6 @@ class DataActivity : AppCompatActivity() {
         data_2.setText(dataName_2)
         data_3.setText(dataName_3)
         data_4.setText(dataName_4)
-    }
-
-    //按鈕按壓時的大小變化
-    val butAction = object: View.OnTouchListener{
-        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-            when(event?.action) {
-                MotionEvent.ACTION_DOWN ->
-                    v?.animate()?.scaleX(0.85f)?.scaleY(0.85f)?.setDuration(150)?.start()
-                MotionEvent.ACTION_UP ->
-                    v?.animate()?.scaleX(1f)?.scaleY(1f)?.setDuration(150)?.start()
-            }
-            return false
-        }
     }
 
     //用ctrl+o開啟

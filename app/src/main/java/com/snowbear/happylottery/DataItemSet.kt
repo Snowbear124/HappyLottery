@@ -34,54 +34,28 @@ class DataItemSet : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_item_set)
 
-        val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
-        val shareData_1 = getSharedPreferences("data_1", MODE_PRIVATE)
-        val shareData_2 = getSharedPreferences("data_2", MODE_PRIVATE)
-        val shareData_3 = getSharedPreferences("data_3", MODE_PRIVATE)
-        val shareData_4 = getSharedPreferences("data_4", MODE_PRIVATE)
+        val shareLogin = getSharedPreferences(GlobalVariable.login, MODE_PRIVATE)
+        val shareData_1 = getSharedPreferences(GlobalVariable.data_1, MODE_PRIVATE)
+        val shareData_2 = getSharedPreferences(GlobalVariable.data_2, MODE_PRIVATE)
+        val shareData_3 = getSharedPreferences(GlobalVariable.data_3, MODE_PRIVATE)
+        val shareData_4 = getSharedPreferences(GlobalVariable.data_4, MODE_PRIVATE)
         val data_state: Int = shareLogin.getInt("data_state", 0)
         Log.d(TAG, "Get data_state: $data_state")
 
         val data_name = findViewById<Button>(R.id.data_name)
-        data_name.setOnTouchListener(butAction)
+        data_name.setOnTouchListener(GlobalVariable().butAction)
 
         itemAdd(itemCount)  //item的數量
 
-        if(data_state == 1) {
-            val dataName = shareData_1.getString("dataName", "DATA 1")
-            data_name.setText(dataName)
-            getItem(shareData_1)
-//            Log.d(TAG, "Data name: ${data_name.text}")
-
-        }else if(data_state == 2) {
-            val dataName = shareData_2.getString("dataName", "DATA 2")
-            data_name.setText(dataName)
-            getItem(shareData_2)
-//            Log.d(TAG, "Data name: ${data_name.text}")
-
-        }else if(data_state == 3) {
-            val dataName = shareData_3.getString("dataName", "DATA 3")
-            data_name.setText(dataName)
-            getItem(shareData_3)
-//            Log.d(TAG, "Data name: ${data_name.text}")
-
-        }else if(data_state == 4) {
-            val dataName = shareData_4.getString("dataName", "DATA 4")
-            data_name.setText(dataName)
-            getItem(shareData_4)
-//            Log.d(TAG, "Data name: ${data_name.text}")
-
-        }else {
-            data_name.setText("No find data")
-        }
+        sharedPreSet(shareLogin, data_name) //sharedPre取得資料
 
         //使用LayoutInflater取得另一個Activity的元件資料
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_data_name, null)
         val dialog_but_yes = view.findViewById<Button>(R.id.but_yes)  //view.findViewById是用來找其他.xml的元件id
         val dialog_data_text = view.findViewById<EditText>(R.id.data_name)
 
-        dialog_but_yes.setOnTouchListener(butAction)
-        dialog_data_text.setOnTouchListener(butAction)
+        dialog_but_yes.setOnTouchListener(GlobalVariable().butAction)
+        dialog_data_text.setOnTouchListener(GlobalVariable().butAction)
 
         data_name.setOnClickListener {
             //使用LayoutInflater取得另一個Activity的元件資料
@@ -106,8 +80,8 @@ class DataItemSet : AppCompatActivity() {
         val but_cancel = findViewById<Button>(R.id.data_cancel)
         val but_Save = findViewById<Button>(R.id.data_save)
 
-        but_cancel.setOnTouchListener(butAction)
-        but_Save.setOnTouchListener(butAction)
+        but_cancel.setOnTouchListener(GlobalVariable().butAction)
+        but_Save.setOnTouchListener(GlobalVariable().butAction)
 
         but_Save.setOnClickListener {
 //            intentDataName = data_name.text.toString()  //將傳輸用的變數，指定為data name
@@ -145,19 +119,6 @@ class DataItemSet : AppCompatActivity() {
 
         but_cancel.setOnClickListener{
             finish()    //關閉Activity介面
-        }
-    }
-
-    //按鈕按壓時的大小變化
-    val butAction = object: View.OnTouchListener{
-        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-            when(event?.action) {
-                MotionEvent.ACTION_DOWN ->
-                    v?.animate()?.scaleX(0.85f)?.scaleY(0.85f)?.setDuration(150)?.start()
-                MotionEvent.ACTION_UP ->
-                    v?.animate()?.scaleX(1f)?.scaleY(1f)?.setDuration(150)?.start()
-            }
-            return false
         }
     }
 
@@ -200,6 +161,41 @@ class DataItemSet : AppCompatActivity() {
 //            }else {
 //                Log.d(TAG, "saveItem_${x+1}: empty")
 //            }
+        }
+    }
+
+    private fun sharedPreSet(share_state: SharedPreferences, title: Button) {
+        val shareData_1 = getSharedPreferences(GlobalVariable.data_1, MODE_PRIVATE)
+        val shareData_2 = getSharedPreferences(GlobalVariable.data_2, MODE_PRIVATE)
+        val shareData_3 = getSharedPreferences(GlobalVariable.data_3, MODE_PRIVATE)
+        val shareData_4 = getSharedPreferences(GlobalVariable.data_4, MODE_PRIVATE)
+
+
+        val data_state: Int = share_state.getInt("data_state", 1)
+        Log.d(TAG, "data_state: $data_state")
+
+        if (data_state == 1) {
+            val dataName = shareData_1.getString("dataName", "DATA 1")
+            title.setText(dataName)
+            getItem(shareData_1)
+
+        } else if (data_state == 2) {
+            val dataName = shareData_2.getString("dataName", "DATA 2")
+            title.setText(dataName)
+            getItem(shareData_2)
+
+        } else if (data_state == 3) {
+            val dataName = shareData_3.getString("dataName", "DATA 3")
+            title.setText(dataName)
+            getItem(shareData_3)
+
+        } else if (data_state == 4) {
+            val dataName = shareData_4.getString("dataName", "DATA 4")
+            title.setText(dataName)
+            getItem(shareData_4)
+
+        } else {
+            title.setText("No find data")
         }
     }
 

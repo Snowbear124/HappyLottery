@@ -9,13 +9,12 @@
     tools:context=".MainActivity">
 
     <Button
-        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/but_start"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="@dimen/dp_185"
         android:layout_height="@dimen/dp_70"
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_start"
-        android:onClick="lottery"
         android:text="@string/start"
         android:textSize="@dimen/sp_38"
         app:layout_constraintBottom_toBottomOf="parent"
