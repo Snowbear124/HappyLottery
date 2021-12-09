@@ -74,7 +74,7 @@ class SetActivity : AppCompatActivity() {
     }
 
     private fun backUp() {
-        backFlag = true
+        backFlag = true // 表示此鍵的功能只是返回
         val intentMainActivity = Intent(this, MainActivity::class.java)
         startActivity(intentMainActivity)
     }
@@ -119,9 +119,9 @@ class SetActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: ")
-        if (backFlag == false) {
-            System.exit(0)  //確保程式完全退出
-        }
+//        if (backFlag == false) {
+//            System.exit(0)  //確保程式完全退出
+//        }
     }
 
 //--------------------------------------------------------------

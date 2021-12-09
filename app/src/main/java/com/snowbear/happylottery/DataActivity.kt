@@ -1,15 +1,11 @@
 package com.snowbear.happylottery
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
-import android.view.MotionEvent
-import android.view.View
+import android.view.KeyEvent
 import android.widget.Button
-import android.widget.TextView
 
 class DataActivity : AppCompatActivity() {
 //    private val REQUEST_RECODE_1 = 1
@@ -65,28 +61,32 @@ class DataActivity : AppCompatActivity() {
             shareLogin.edit().putInt("data_state", 1).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            finish()
+            backUp()
+//            finish()
         }
 
         data_2.setOnClickListener {
             shareLogin.edit().putInt("data_state", 2).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            finish()
+            backUp()
+//            finish()
         }
 
         data_3.setOnClickListener {
             shareLogin.edit().putInt("data_state", 3).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            finish()
+            backUp()
+//            finish()
         }
 
         data_4.setOnClickListener {
             shareLogin.edit().putInt("data_state", 4).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            finish()
+            backUp()
+//            finish()
         }
 
         set_1.setOnClickListener {
@@ -114,7 +114,8 @@ class DataActivity : AppCompatActivity() {
         }
 
         but_back.setOnClickListener {
-            finish()
+            backUp()
+//            finish()
         }
     }
 
@@ -142,6 +143,19 @@ class DataActivity : AppCompatActivity() {
         data_2.setText(dataName_2)
         data_3.setText(dataName_3)
         data_4.setText(dataName_4)
+    }
+
+    fun backUp() {
+        val intentMainActivity = intentActivity.setClass(this, MainActivity::class.java)
+        startActivity(intentMainActivity)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            backUp()
+            return false
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
     //用ctrl+o開啟

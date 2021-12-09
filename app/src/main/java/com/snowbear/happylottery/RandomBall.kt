@@ -1,19 +1,7 @@
 package com.snowbear.happylottery
 
-import android.content.Context
 import android.util.Log
-import android.widget.Button
-import androidx.core.content.ContextCompat
 import kotlin.random.Random
-
-open class BallItem() {
-    var listBall1 = mutableListOf<String>()
-
-    fun totalBalls1(list: String): Int {
-        listBall1.add(list)
-        return listBall1.size
-    }
-}
 
 class LotteryBall {
 //    var ballsList = listOf<>()    //留以後有加抽籤重複選項用

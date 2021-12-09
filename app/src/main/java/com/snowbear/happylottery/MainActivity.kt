@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     var itemCount = GlobalVariable.getItemCount()
     var exitFlag = false
 
-    val testList = mutableListOf<String>("Apply","Banana","Cherry","Dragonfruit","Fig")
+//    val testList = mutableListOf<String>("Apply","Banana","Cherry","Dragonfruit","Fig")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,40 +57,37 @@ class MainActivity : AppCompatActivity() {
         sharedPreSet(shareLogin, but_dataName)
 
         but_dataName.setOnClickListener{
+            exitFlag = true
             intentMainActivity.setClass(this, DataActivity::class.java)
             startActivity(intentMainActivity)
         }
 
-        val viewLottery = LayoutInflater.from(this).inflate(R.layout.dialog_lottery, null, false)
-//        val layout = findViewById<ConstraintLayout>(R.id.main_layout)
-//        val anim_lottery = viewLottery.findViewById<ImageView>(R.id.anim_lottery)
         val intentAnimLotteryActivity = intentMainActivity.setClass(this,AnimLotteryActivity::class.java)
-
         but_lottery.setOnClickListener {
-//            startActivity(intentAnimLotteryActivity)  //跳到抽獎動畫
-
-            lotteryAction(but_lottery, layout_lottery_result, but_lottery_result, tV_lottery_result)
-            but_start.setText("AGAIN")
-
+            startActivity(intentAnimLotteryActivity)  //跳到抽獎動畫
         }
 
         but_lottery_result.setOnClickListener {
-            lotteryAction(but_lottery, layout_lottery_result, but_lottery_result, tV_lottery_result)
+            startActivity(intentAnimLotteryActivity)  //跳到抽獎動畫
+        }
 
+        but_start.setOnClickListener {
+            startActivity(intentAnimLotteryActivity)  //跳到抽獎動畫
         }
 
         val slide = Slide()
         but_set.setOnClickListener{
-            // intent是用來做介面傳送功能的程式
             exitFlag = true
+            // intent是用來做介面傳送功能的程式
             val intentSetActivity = Intent(this, SetActivity::class.java)
-//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                this, but_set, ViewCompat.getTransitionName(but_set).toString())
-//          ViewCompat.getTransitionName(but_set).toString() 為取得transitionName
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, but_set, "set_trsnsition"
             )
             startActivity(intentSetActivity, options.toBundle())    // startActivity指開啟()內的介面, 與開啟時的動畫
+
+//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                this, but_set, ViewCompat.getTransitionName(but_set).toString())
+//          ViewCompat.getTransitionName(but_set).toString() 為取得transitionName
         }
     }
 
@@ -102,13 +99,31 @@ class MainActivity : AppCompatActivity() {
         val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
         sharedPreSet(shareLogin, but_dataName)
 
-        //返回時變回抽獎畫面
-        val but_lottery = findViewById<Button>(R.id.but_lottery)
         val layout_lottery_result = findViewById<LinearLayout>(R.id.layout_lottery_result)
         val but_start = findViewById<Button>(R.id.but_start)
-        layout_lottery_result.visibility = View.GONE
-        but_lottery.visibility = View.VISIBLE
-        but_start.setText("START")
+        val but_lottery = findViewById<Button>(R.id.but_lottery)
+        val tV_lottery_result = findViewById<TextView>(R.id.tV_lottery_result)
+        val but_lottery_result = findViewById<Button>(R.id.but_lottery_result)
+
+        val intentAnimLotteryActivity = intentMainActivity.setClass(this,AnimLotteryActivity::class.java)
+        but_lottery.setOnClickListener {
+            startActivity(intentAnimLotteryActivity)  //跳到抽獎動畫
+        }
+
+        but_lottery_result.setOnClickListener {
+            startActivity(intentAnimLotteryActivity)  //跳到抽獎動畫
+        }
+
+        but_start.setOnClickListener {
+            startActivity(intentAnimLotteryActivity)  //跳到抽獎動畫
+        }
+
+
+        //按下抽獎按鈕後的畫面
+        lotteryIcon(but_lottery, layout_lottery_result, true)
+        lotteryAction(but_lottery_result, tV_lottery_result)
+        but_start.setText("AGAIN")
+
     }
 
     private fun sharedPreSet(share_state: SharedPreferences, title: Button) {
@@ -146,17 +161,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun lotteryAction(  //抽獎的結果顯示
-        start_icon: Button,
-        result_icon: LinearLayout,
-        result_but: Button,
-        result_text: TextView,
-    ) {
+    //抽獎的 開始/結果 畫面顯示 (開始畫面, 結束畫面, 判斷值)
+    private fun lotteryIcon(start_icon: Button, result_icon: LinearLayout, lotteryFlag: Boolean) {
+        if(lotteryFlag == true) {
+            start_icon.visibility = View.GONE
+            result_icon.visibility = View.VISIBLE
+        }else {
+            start_icon.visibility = View.VISIBLE
+            result_icon.visibility = View.GONE
+        }
+    }
 
+    //抽獎的數字的判斷 (彩球, 項目)
+    private fun lotteryAction(result_but: Button, result_text: TextView) {
         val balls: Int = LotteryBall().getBallNumber(itemList)
-        start_icon.visibility = View.GONE
-        result_icon.visibility = View.VISIBLE
-
 
         if (itemList.size == 0) {
             result_but.setText("0")
@@ -255,9 +273,9 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: ")
-        if(exitFlag == false) {
-            System.exit(0)  //確保程式完全退出
-        }
+//        if(exitFlag == false) {
+//            System.exit(0)  //確保程式完全退出
+//        }
     }
 //--------------------------------------------------------------
 }
