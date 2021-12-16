@@ -29,7 +29,6 @@
         android:drawableBottom="@drawable/edit_line"
         android:ems="10"
         android:gravity="center"
-        android:inputType="date"
         android:maxLines="1"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_36"

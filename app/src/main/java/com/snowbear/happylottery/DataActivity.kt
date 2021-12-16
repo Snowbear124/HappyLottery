@@ -3,22 +3,36 @@ package com.snowbear.happylottery
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Explode
 import android.util.Log
-import android.view.KeyEvent
+import android.view.Window
 import android.widget.Button
 
 class DataActivity : AppCompatActivity() {
-//    private val REQUEST_RECODE_1 = 1
-//    private val REQUEST_RECODE_2 = 2
-//    private val REQUEST_RECODE_3 = 3
-//    private val REQUEST_RECODE_4 = 4
     val TAG = DataActivity::class.java.simpleName
-    val intentActivity = Intent()
-    var dataNameMap = mutableMapOf<Int, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data)
+        val but_back = findViewById<Button>(R.id.but_back)
+
+        butAnim()
+        getSharedPreData()
+        touchDataButton()
+        touchDataSetButton()
+
+        but_back.setOnClickListener {
+            finish()
+        }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+//        Log.d(TAG, "onRestart: ")
+        getSharedPreData()
+    }
+
+    private fun butAnim() {
         val data_1 = findViewById<Button>(R.id.data_1)  // 一定要寫在fun內，不然會崩潰
         val data_2 = findViewById<Button>(R.id.data_2)
         val data_3 = findViewById<Button>(R.id.data_3)
@@ -38,96 +52,82 @@ class DataActivity : AppCompatActivity() {
         set_3.setOnTouchListener(GlobalVariable().butAction)
         set_4.setOnTouchListener(GlobalVariable().butAction)
         but_back.setOnTouchListener(GlobalVariable().butAction)
+    }
 
+    private fun touchDataButton() {
         val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
-        val shareData_1 = getSharedPreferences("data_1", MODE_PRIVATE)
-        val shareData_2 = getSharedPreferences("data_2", MODE_PRIVATE)
-        val shareData_3 = getSharedPreferences("data_3", MODE_PRIVATE)
-        val shareData_4 = getSharedPreferences("data_4", MODE_PRIVATE)
-//        val data_state = shareLogin.getInt("data_state", 0)
-        val inteDataItemSet = intentActivity.setClass(this, DataItemSet::class.java)
-
-        val dataName_1 = shareData_1.getString("dataName", "DATA 1")
-        val dataName_2 = shareData_2.getString("dataName", "DATA 2")
-        val dataName_3 = shareData_3.getString("dataName", "DATA 3")
-        val dataName_4 = shareData_4.getString("dataName", "DATA 4")
-
-        data_1.setText(dataName_1)
-        data_2.setText(dataName_2)
-        data_3.setText(dataName_3)
-        data_4.setText(dataName_4)
+        val data_1 = findViewById<Button>(R.id.data_1)  // 一定要寫在fun內，不然會崩潰
+        val data_2 = findViewById<Button>(R.id.data_2)
+        val data_3 = findViewById<Button>(R.id.data_3)
+        val data_4 = findViewById<Button>(R.id.data_4)
 
         data_1.setOnClickListener {
             shareLogin.edit().putInt("data_state", 1).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            backUp()
-//            finish()
+            finish()
         }
 
         data_2.setOnClickListener {
             shareLogin.edit().putInt("data_state", 2).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            backUp()
-//            finish()
+            finish()
         }
 
         data_3.setOnClickListener {
             shareLogin.edit().putInt("data_state", 3).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            backUp()
-//            finish()
+            finish()
         }
 
         data_4.setOnClickListener {
             shareLogin.edit().putInt("data_state", 4).apply()
             val data_state = shareLogin.getInt("data_state", 0)
             Log.d(TAG, "Switch data: $data_state")
-            backUp()
-//            finish()
+            finish()
         }
+    }
+
+    private fun touchDataSetButton() {
+        val DataItemSet = Intent(this, DataItemSet::class.java)
+        val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
+        val set_1 = findViewById<Button>(R.id.set_1)
+        val set_2 = findViewById<Button>(R.id.set_2)
+        val set_3 = findViewById<Button>(R.id.set_3)
+        val set_4 = findViewById<Button>(R.id.set_4)
 
         set_1.setOnClickListener {
             shareLogin.edit().putInt("data_state", 1).apply()
             Log.d(TAG, "Data_state: ${shareLogin.getInt("data_state", 0)}")
-            startActivity(inteDataItemSet)
+            startActivity(DataItemSet)
+            enterAnim()
         }
 
         set_2.setOnClickListener {
             shareLogin.edit().putInt("data_state", 2).apply()
             Log.d(TAG, "Data_state: ${shareLogin.getInt("data_state", 0)}")
-            startActivity(inteDataItemSet)
+            startActivity(DataItemSet)
+            enterAnim()
         }
 
         set_3.setOnClickListener {
             shareLogin.edit().putInt("data_state", 3).apply()
             Log.d(TAG, "Data_state: ${shareLogin.getInt("data_state", 0)}")
-            startActivity(inteDataItemSet)
+            startActivity(DataItemSet)
+            enterAnim()
         }
 
         set_4.setOnClickListener {
             shareLogin.edit().putInt("data_state", 4).apply()
             Log.d(TAG, "Data_state: ${shareLogin.getInt("data_state", 0)}")
-            startActivity(inteDataItemSet)
-        }
-
-        but_back.setOnClickListener {
-            backUp()
-//            finish()
+            startActivity(DataItemSet)
+            enterAnim()
         }
     }
 
-    override fun onRestart() {
-        super.onRestart()
-//        Log.d(TAG, "onRestart: ")
-
-        val data_1 = findViewById<Button>(R.id.data_1)  // 一定要寫在fun內，不然會崩潰
-        val data_2 = findViewById<Button>(R.id.data_2)
-        val data_3 = findViewById<Button>(R.id.data_3)
-        val data_4 = findViewById<Button>(R.id.data_4)
-
+    private fun getSharedPreData() {
         val shareLogin = getSharedPreferences("login_app", MODE_PRIVATE)
         val shareData_1 = getSharedPreferences("data_1", MODE_PRIVATE)
         val shareData_2 = getSharedPreferences("data_2", MODE_PRIVATE)
@@ -139,83 +139,23 @@ class DataActivity : AppCompatActivity() {
         val dataName_3 = shareData_3.getString("dataName", "DATA 3")
         val dataName_4 = shareData_4.getString("dataName", "DATA 4")
 
+        val data_1 = findViewById<Button>(R.id.data_1)
+        val data_2 = findViewById<Button>(R.id.data_2)
+        val data_3 = findViewById<Button>(R.id.data_3)
+        val data_4 = findViewById<Button>(R.id.data_4)
+
         data_1.setText(dataName_1)
         data_2.setText(dataName_2)
         data_3.setText(dataName_3)
         data_4.setText(dataName_4)
     }
 
-    fun backUp() {
-        val intentMainActivity = intentActivity.setClass(this, MainActivity::class.java)
-        startActivity(intentMainActivity)
+    private fun enterAnim() {
+        overridePendingTransition(R.anim.fade_in, R.anim.no_anim_transition)
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
-            backUp()
-            return false
-        }
-        return super.onKeyDown(keyCode, event)
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.no_anim_transition, R.anim.fade_out)
     }
-
-    //用ctrl+o開啟
-    //intent接收回傳資料使用，讓另一個Atcivity關閉後還能回傳資料
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        val data_1 = findViewById<Button>(R.id.data_1)
-//        val data_2 = findViewById<Button>(R.id.data_2)
-//        val data_3 = findViewById<Button>(R.id.data_3)
-//        val data_4 = findViewById<Button>(R.id.data_4)
-//        var dataName: String? = ""
-//
-//        if(resultCode == Activity.RESULT_OK){
-//            if(requestCode == REQUEST_RECODE_1) {
-//                dataName = data?.getStringExtra("DATANAME")
-//                data_1.setText(dataName.toString())
-//                Log.d(TAG, "Data 1 text become ${dataName.toString()}")
-//
-//            }else if(requestCode == REQUEST_RECODE_2) {
-//                dataName = data?.getStringExtra("DATANAME")
-//                data_2.setText(dataName.toString())
-//                Log.d(TAG, "Data 2 text become ${dataName.toString()}")
-//
-//            }else if(requestCode == REQUEST_RECODE_3) {
-//                dataName = data?.getStringExtra("DATANAME")
-//                data_3.setText(dataName.toString())
-//                Log.d(TAG, "Data 3 text become ${dataName.toString()}")
-//
-//            }else if(requestCode == REQUEST_RECODE_4) {
-//                dataName = data?.getStringExtra("DATANAME")
-//                data_4.setText(dataName.toString())
-//                Log.d(TAG, "Data 3 text become ${dataName.toString()}")
-//            }
-//        }
-//    }
-
-    //Activity週期變化顯示---------------------------------------------------
-//    override fun onStart() {
-//        super.onStart()
-//        Log.d(TAG, "onStart: ")
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        Log.d(TAG, "onResume: ")
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//        Log.d(TAG, "onPause: ")
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        Log.d(TAG, "onStop: ")
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        Log.d(TAG, "onDestroy: ")
-//    }
-//--------------------------------------------------------------
 }

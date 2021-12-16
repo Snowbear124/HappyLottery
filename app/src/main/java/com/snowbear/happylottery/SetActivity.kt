@@ -1,16 +1,12 @@
 package com.snowbear.happylottery
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.Switch
 import androidx.appcompat.app.AlertDialog
 
@@ -21,7 +17,6 @@ class SetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.set)
-        Log.d(TAG, "onCreate: ")
 
         val intentActivity = Intent()
         val set_data = findViewById<Button>(R.id.set_data)
@@ -30,26 +25,38 @@ class SetActivity : AppCompatActivity() {
         val set_exit = findViewById<Button>(R.id.set_exit)
         val set_switch = findViewById<Switch>(R.id.switch_item_re)
 
-        set_data.setOnTouchListener(GlobalVariable().butAction)
-        set_language.setOnTouchListener(GlobalVariable().butAction)
-        set_exit.setOnTouchListener(GlobalVariable().butAction)
-        set_back.setOnTouchListener(GlobalVariable().butAction)
+        butAnim()
 
         set_data.setOnClickListener {
-            val intentDataActivity = intentActivity.setClass(this, DataActivity::class.java)
-            startActivity(intentDataActivity)
+            touchDataButton()
         }
-
-        set_switch.setOnCheckedChangeListener { compoundButton, b ->  }
 
         set_exit.setOnClickListener {
             isExit()
         }
 
         set_back.setOnClickListener{
-            backUp()
+            backAnim()
         }
 
+    }
+
+    private fun touchDataButton() {
+        val DataActivity = Intent(this, DataActivity::class.java)
+        startActivity(DataActivity)
+        overridePendingTransition(R.anim.fade_in, R.anim.no_anim_transition)
+    }
+
+    private fun butAnim() {
+        val set_data = findViewById<Button>(R.id.set_data)
+        val set_back = findViewById<Button>(R.id.set_back)
+        val set_language = findViewById<Button>(R.id.set_language)
+        val set_exit = findViewById<Button>(R.id.set_exit)
+
+        set_data.setOnTouchListener(GlobalVariable().butAction)
+        set_language.setOnTouchListener(GlobalVariable().butAction)
+        set_exit.setOnTouchListener(GlobalVariable().butAction)
+        set_back.setOnTouchListener(GlobalVariable().butAction)
     }
 
     private fun isExit() {
@@ -62,9 +69,8 @@ class SetActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         but_yes.setOnClickListener {
-//            System.exit(0)  //重啟APP
-//            android.os.Process.killProcess(android.os.Process.myPid())  //重啟APP
-            finish() //關閉APP
+            App.addActivity(this)   //將此activity加入list
+            App.clearActivity() //關閉所有的activity
         }
 
         but_no.setOnClickListener {
@@ -73,15 +79,16 @@ class SetActivity : AppCompatActivity() {
 //
     }
 
-    private fun backUp() {
-        backFlag = true // 表示此鍵的功能只是返回
-        val intentMainActivity = Intent(this, MainActivity::class.java)
-        startActivity(intentMainActivity)
+    private fun backAnim() {
+        finish()
+        overridePendingTransition(R.anim.no_anim_transition, R.anim.slide_up_out)
     }
+
+
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            backUp()
+            backAnim()
             return false
         }
         return super.onKeyDown(keyCode, event)
@@ -107,7 +114,7 @@ class SetActivity : AppCompatActivity() {
         super.onStop()
         Log.d(TAG, "onStop: ")
         if (backFlag == true) {
-            finish()
+//            finish()
         }
     }
 
@@ -123,7 +130,5 @@ class SetActivity : AppCompatActivity() {
 //            System.exit(0)  //確保程式完全退出
 //        }
     }
-
-//--------------------------------------------------------------
 }
 
