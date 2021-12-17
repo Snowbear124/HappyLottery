@@ -18,24 +18,25 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/item_data_name"
             android:text="@string/data_1"
+            android:textColor="@color/black"
             android:textAllCaps="false"
             android:textSize="@dimen/sp_28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/data_save"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/dp_130"
             android:layout_height="@dimen/dp_70"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginRight="35dp"
             android:background="@drawable/button_rad"
-            android:text="SAVE"
+            android:text="@string/save"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_28"/>
+            android:textSize="@dimen/sp_28" />
 
         <Button
             android:id="@+id/data_cancel"
@@ -45,9 +46,9 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="35dp"
             android:background="@drawable/button_blue"
-            android:text="CANCEL"
+            android:text="@string/cancel"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_28" />
 

@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/anim_layout"
-    tools:context=".AnimLotteryActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/anim_lottery"
-        android:layout_width="@dimen/dp_320"
-        android:layout_height="@dimen/dp_320"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="@dimen/dp_340"
+        android:layout_height="@dimen/dp_70"
+        android:background="@drawable/toast_message"
+        android:gravity="center"
+        android:text="@string/no_set_item"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_40"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/avd_lottrey_balls" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

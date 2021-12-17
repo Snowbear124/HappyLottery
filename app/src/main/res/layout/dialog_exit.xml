@@ -17,11 +17,11 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="@dimen/dp_260"
+            android:layout_width="@dimen/dp_240"
             android:layout_height="@dimen/dp_120"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="Do you want to exit?"
+            android:text="@string/do_you_want_to_exit"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_42"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,27 +29,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/but_no"
-            android:layout_width="@dimen/dp_140"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp_130"
             android:layout_height="@dimen/dp_60"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="22dp"
             android:background="@drawable/button_blue"
-            android:text="No"
+            android:text="@string/no"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_30"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/but_yes" />
 
         <Button
-            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/but_yes"
-            android:layout_width="@dimen/dp_140"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp_130"
             android:layout_height="@dimen/dp_60"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/button_rad"
-            android:text="Yes"
+            android:text="@string/yes"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_30"
             app:layout_constraintEnd_toEndOf="parent"

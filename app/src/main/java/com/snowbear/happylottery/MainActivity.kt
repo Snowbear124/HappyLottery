@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.transition.Explode
 import android.util.Log
 import android.view.*
@@ -106,37 +107,57 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "data_state: $data_state")
 
         val but_data = findViewById<Button>(R.id.data_name)
+        val DATA_1 = getString(R.string.data_1)
+        val DATA_2 = getString(R.string.data_2)
+        val DATA_3 = getString(R.string.data_3)
+        val DATA_4 = getString(R.string.data_4)
 
         if (data_state == 1) {
-            val dataName = shareData_1.getString("dataName", "DATA 1")
+            val dataName = shareData_1.getString("dataName", DATA_1)
             but_data.text = dataName
             getSharedPreItem(shareData_1)
 
         } else if (data_state == 2) {
-            val dataName = shareData_2.getString("dataName", "DATA 2")
+            val dataName = shareData_2.getString("dataName", DATA_2)
             but_data.text = dataName
             getSharedPreItem(shareData_2)
 
         } else if (data_state == 3) {
-            val dataName = shareData_3.getString("dataName", "DATA 3")
+            val dataName = shareData_3.getString("dataName", DATA_3)
             but_data.text = dataName
             getSharedPreItem(shareData_3)
 
         } else if (data_state == 4) {
-            val dataName = shareData_4.getString("dataName", "DATA 4")
+            val dataName = shareData_4.getString("dataName", DATA_4)
             but_data.text = dataName
             getSharedPreItem(shareData_4)
 
         } else {
-            but_data.setText("Read error.")
+            but_data.text = getString(R.string.read_error)
         }
     }
 
     private fun emptyDataHint() {
-        val messenger = "No set data itme."
-        val toast = Toast.makeText(this, messenger, Toast.LENGTH_LONG)
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0)
-        toast.show()
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_null_data, null)
+        val bundle = AlertDialog.Builder(this)
+        val dialog = bundle.create()
+        dialog.setView(view)
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        hintTime(dialog, 2)
+    }
+
+    private fun hintTime(dialog: AlertDialog, times: Long) {
+        object : CountDownTimer(times*1000, 1000) {
+            override fun onTick(p0: Long) {
+
+            }
+
+            override fun onFinish() {
+                dialog.dismiss()
+            }
+        }.start()
     }
 
     private fun lotteryAnim() {
@@ -158,11 +179,11 @@ class MainActivity : AppCompatActivity() {
         if(lotteryFlag == true) {
             but_lottery.visibility = View.GONE
             layout_lottery_result.visibility = View.VISIBLE
-            but_start.text = "AGAIN"
+            but_start.text = getString(R.string.anagin)
         }else {
             but_lottery.visibility = View.VISIBLE
             layout_lottery_result.visibility = View.GONE
-            but_start.text = "START"
+            but_start.text = getString(R.string.start)
         }
     }
 
@@ -176,7 +197,7 @@ class MainActivity : AppCompatActivity() {
 
         if (itemList.size == 0) {
             but_lottery_result.text = ""
-            tV_lottery_result.setText("Read error.")
+            tV_lottery_result.text = getString(R.string.read_error)
 
         } else {
             but_lottery_result.text = balls.toString()
@@ -250,6 +271,10 @@ class MainActivity : AppCompatActivity() {
         val bundle = AlertDialog.Builder(this).setView(view)
         val dialog = bundle.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val anim = GlobalVariable().butAction
+        but_yes.setOnTouchListener(anim)
+        but_no.setOnTouchListener(anim)
 
         but_yes.setOnClickListener {
             finish()    //關閉APP

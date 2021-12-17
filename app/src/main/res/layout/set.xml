@@ -18,8 +18,7 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="@dimen/sp_28"
-        android:transitionName="set_trsnsition" />
+        android:textSize="@dimen/sp_28" />
 
     <Button
         android:id="@+id/set_back"
@@ -48,6 +47,7 @@
             android:layout_gravity="center"
             android:background="@drawable/item_set"
             android:text="@string/data_set"
+            android:textColor="@color/black"
             android:textSize="@dimen/sp_28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +63,7 @@
             android:layout_marginTop="32dp"
             android:background="@drawable/item_set"
             android:text="@string/language"
+            android:textColor="@color/black"
             android:textSize="@dimen/sp_28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,6 +112,7 @@
             android:layout_marginTop="32dp"
             android:background="@drawable/item_set"
             android:text="@string/exit"
+            android:textColor="@color/black"
             android:textSize="@dimen/sp_28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

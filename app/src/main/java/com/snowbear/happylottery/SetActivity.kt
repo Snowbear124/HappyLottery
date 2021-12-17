@@ -52,11 +52,12 @@ class SetActivity : AppCompatActivity() {
         val set_back = findViewById<Button>(R.id.set_back)
         val set_language = findViewById<Button>(R.id.set_language)
         val set_exit = findViewById<Button>(R.id.set_exit)
+        val anim = GlobalVariable().butAction
 
-        set_data.setOnTouchListener(GlobalVariable().butAction)
-        set_language.setOnTouchListener(GlobalVariable().butAction)
-        set_exit.setOnTouchListener(GlobalVariable().butAction)
-        set_back.setOnTouchListener(GlobalVariable().butAction)
+        set_data.setOnTouchListener(anim)
+        set_language.setOnTouchListener(anim)
+        set_exit.setOnTouchListener(anim)
+        set_back.setOnTouchListener(anim)
     }
 
     private fun isExit() {
@@ -67,6 +68,10 @@ class SetActivity : AppCompatActivity() {
         val bundle = AlertDialog.Builder(this).setView(view)
         val dialog = bundle.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val anim = GlobalVariable().butAction
+        but_yes.setOnTouchListener(anim)
+        but_no.setOnTouchListener(anim)
 
         but_yes.setOnClickListener {
             App.addActivity(this)   //將此activity加入list

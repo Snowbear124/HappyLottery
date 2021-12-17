@@ -8,4 +8,18 @@
     <string name="item_repeat">選項重複</string>
     <string name="language">語言</string>
     <string name="exit">離開</string>
+    <string name="data_2">檔案 2</string>
+    <string name="data_3">檔案 3</string>
+    <string name="data_4">檔案 4</string>
+    <string name="anagin">再一次</string>
+    <string name="read_error">讀取錯誤</string>
+    <string name="back">返回</string>
+    <string name="save">儲存</string>
+    <string name="cancel">取消</string>
+    <string name="yes">確認</string>
+    <string name="what_data_name">請輸入檔案的名字?</string>
+    <string name="no">取消</string>
+    <string name="do_you_want_to_exit">要離開了嗎?</string>
+    <string name="no_set_item">未設定獎項</string>
+    <string name="not_data_name">你還沒設定檔案名稱!</string>
 </resources>

@@ -134,20 +134,26 @@ class DataActivity : AppCompatActivity() {
         val shareData_3 = getSharedPreferences("data_3", MODE_PRIVATE)
         val shareData_4 = getSharedPreferences("data_4", MODE_PRIVATE)
 
-        val dataName_1 = shareData_1.getString("dataName", "DATA 1")
-        val dataName_2 = shareData_2.getString("dataName", "DATA 2")
-        val dataName_3 = shareData_3.getString("dataName", "DATA 3")
-        val dataName_4 = shareData_4.getString("dataName", "DATA 4")
+        val DATA_1 = getString(R.string.data_1)
+        val DATA_2 = getString(R.string.data_2)
+        val DATA_3 = getString(R.string.data_3)
+        val DATA_4 = getString(R.string.data_4)
+
+        val dataName_1 = shareData_1.getString("dataName", DATA_1)
+        val dataName_2 = shareData_2.getString("dataName", DATA_2)
+        val dataName_3 = shareData_3.getString("dataName", DATA_3)
+        val dataName_4 = shareData_4.getString("dataName", DATA_4)
 
         val data_1 = findViewById<Button>(R.id.data_1)
         val data_2 = findViewById<Button>(R.id.data_2)
         val data_3 = findViewById<Button>(R.id.data_3)
         val data_4 = findViewById<Button>(R.id.data_4)
 
-        data_1.setText(dataName_1)
-        data_2.setText(dataName_2)
-        data_3.setText(dataName_3)
-        data_4.setText(dataName_4)
+        data_1.text = dataName_1
+        data_2.text = dataName_2
+        data_3.text = dataName_3
+        data_4.text = dataName_4
+
     }
 
     private fun enterAnim() {

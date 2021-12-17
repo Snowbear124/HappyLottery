@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 
 class DataItemSet : AppCompatActivity() {
@@ -76,6 +73,7 @@ class DataItemSet : AppCompatActivity() {
             //取得id:data_name的輸入資料，並設定回this的按鈕text上
             but_data.setText(dialog_data_text.text)
             Log.d(TAG, "Dialog Data name: ${dialog_data_text.text}")
+
             Dialog.dismiss()
         }
     }
@@ -91,28 +89,44 @@ class DataItemSet : AppCompatActivity() {
         val but_data = findViewById<Button>(R.id.data_name)
         val dataText: String = but_data.text.toString()
 
-        if(data_state == 1) {
-            shareData_1.edit().putString("dataName", dataText).apply()
-            saveItem(shareData_1)
-            Log.d(TAG, "Save data 1: ${dataText}")
+        if(dataText != "") {
+            if(data_state == 1) {
+                if(dataText != "") {
+                    shareData_1.edit().putString("dataName", dataText).apply()
+                }
+                saveItem(shareData_1)
+                Log.d(TAG, "Save data 1: ${dataText}")
 
-        }else if(data_state == 2) {
-            shareData_2.edit().putString("dataName", dataText).apply()
-            saveItem(shareData_2)
-            Log.d(TAG, "Save data 2: ${dataText}")
+            }else if(data_state == 2) {
+                if(dataText != "") {
+                    shareData_2.edit().putString("dataName", dataText).apply()
+                }
+                saveItem(shareData_2)
+                Log.d(TAG, "Save data 2: ${dataText}")
 
-        }else if(data_state == 3) {
-            shareData_3.edit().putString("dataName", dataText).apply()
-            saveItem(shareData_3)
-            Log.d(TAG, "Save data 3: ${dataText}")
+            }else if(data_state == 3) {
+                if(dataText != "") {
+                    shareData_3.edit().putString("dataName", dataText).apply()
+                }
+                saveItem(shareData_3)
+                Log.d(TAG, "Save data 3: ${dataText}")
 
-        }else if(data_state == 4) {
-            shareData_4.edit().putString("dataName", dataText).apply()
-            saveItem(shareData_4)
-            Log.d(TAG, "Save data 4: ${dataText}")
+            }else if(data_state == 4) {
+                if(dataText != "") {
+                    shareData_4.edit().putString("dataName", dataText).apply()
+                }
+                saveItem(shareData_4)
+                Log.d(TAG, "Save data 4: ${dataText}")
 
+            }
+            finish()
+        }else {
+            val messenger = getString(R.string.not_data_name)
+            Toast
+                .makeText(this, messenger, Toast.LENGTH_SHORT)
+                .show()
         }
-        finish()
+
     }
 
     private fun getSharedPreData() {
@@ -126,31 +140,35 @@ class DataItemSet : AppCompatActivity() {
         Log.d(TAG, "data_state: $data_state")
 
         val but_data = findViewById<Button>(R.id.data_name)
+        val DATA_1 = getString(R.string.data_1)
+        val DATA_2 = getString(R.string.data_2)
+        val DATA_3 = getString(R.string.data_3)
+        val DATA_4 = getString(R.string.data_4)
 
         itemAdd(itemCount)
 
         if (data_state == 1) {
-            val dataName = shareData_1.getString("dataName", "DATA 1")
+            val dataName = shareData_1.getString("dataName", DATA_1)
             but_data.text = dataName
             getItem(shareData_1)
 
         } else if (data_state == 2) {
-            val dataName = shareData_2.getString("dataName", "DATA 2")
+            val dataName = shareData_2.getString("dataName", DATA_2)
             but_data.text = dataName
             getItem(shareData_2)
 
         } else if (data_state == 3) {
-            val dataName = shareData_3.getString("dataName", "DATA 3")
+            val dataName = shareData_3.getString("dataName", DATA_3)
             but_data.text = dataName
             getItem(shareData_3)
 
         } else if (data_state == 4) {
-            val dataName = shareData_4.getString("dataName", "DATA 4")
+            val dataName = shareData_4.getString("dataName", DATA_4)
             but_data.text = dataName
             getItem(shareData_4)
 
         } else {
-            but_data.text = "Read error."
+            but_data.text = getString(R.string.read_error)
         }
     }
 

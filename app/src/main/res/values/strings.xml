@@ -10,4 +10,15 @@
     <string name="data_2">DATA 2</string>
     <string name="data_3">DATA 3</string>
     <string name="data_4">DATA 4</string>
+    <string name="anagin">AGAIN</string>
+    <string name="read_error">Read error.</string>
+    <string name="back">Back</string>
+    <string name="save">SAVE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="yes">Yes</string>
+    <string name="what_data_name">What Data Name?</string>
+    <string name="no">No</string>
+    <string name="do_you_want_to_exit">Do you want to exit?</string>
+    <string name="no_set_item">No set item.</string>
+    <string name="not_data_name">You not set data name!</string>
 </resources>
