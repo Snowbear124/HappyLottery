@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.transition.Explode
 import android.util.Log
 import android.view.*
 import android.widget.*
@@ -19,7 +18,9 @@ class MainActivity : AppCompatActivity() {
     var itemList = mutableListOf<String>()
     var itemCount = GlobalVariable.getItemCount()
     var lotteryTouchFlag = false
+    var setDataFlag = false
     var nullDataFlag = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        Log.d(TAG, "onRestart: ")
+        Log.d(TAG, "onRestart:")
         getSharedPreData()
 
         val but_start = findViewById<Button>(R.id.but_start)
@@ -76,8 +77,15 @@ class MainActivity : AppCompatActivity() {
             lotteryAnim()
         }
 
-        //按下抽獎按鈕後的畫面
-        lotteryAction(lotteryTouchFlag)
+        //按下設定鈕才會切回彩球，若只是退出則不會
+        if(setDataFlag) {
+//            lotteryAction(false)
+            lotteryIcon(false)    //變回玻璃彩球
+            setDataFlag = false
+        }else {
+            lotteryAction(lotteryTouchFlag)
+        }
+
     }
 
     private fun getSharedPreItem(shareData: SharedPreferences) {
@@ -102,8 +110,10 @@ class MainActivity : AppCompatActivity() {
         val shareData_2 = getSharedPreferences(GlobalVariable.data_2, MODE_PRIVATE)
         val shareData_3 = getSharedPreferences(GlobalVariable.data_3, MODE_PRIVATE)
         val shareData_4 = getSharedPreferences(GlobalVariable.data_4, MODE_PRIVATE)
+        val shareData_5 = getSharedPreferences(GlobalVariable.data_5, MODE_PRIVATE)
+        val shareData_6 = getSharedPreferences(GlobalVariable.data_6, MODE_PRIVATE)
 
-        val data_state: Int = sharedLogin.getInt("data_state", 1)
+        val data_state: Int = sharedLogin.getInt(GlobalVariable.data_state, 1)
         Log.d(TAG, "data_state: $data_state")
 
         val but_data = findViewById<Button>(R.id.data_name)
@@ -111,6 +121,8 @@ class MainActivity : AppCompatActivity() {
         val DATA_2 = getString(R.string.data_2)
         val DATA_3 = getString(R.string.data_3)
         val DATA_4 = getString(R.string.data_4)
+        val DATA_5 = getString(R.string.data_5)
+        val DATA_6 = getString(R.string.data_6)
 
         if (data_state == 1) {
             val dataName = shareData_1.getString("dataName", DATA_1)
@@ -132,6 +144,16 @@ class MainActivity : AppCompatActivity() {
             but_data.text = dataName
             getSharedPreItem(shareData_4)
 
+        } else if (data_state == 5) {
+            val dataName = shareData_5.getString("dataName", DATA_5)
+            but_data.text = dataName
+            getSharedPreItem(shareData_5)
+
+        }else if (data_state == 6) {
+            val dataName = shareData_6.getString("dataName", DATA_6)
+            but_data.text = dataName
+            getSharedPreItem(shareData_6)
+
         } else {
             but_data.text = getString(R.string.read_error)
         }
@@ -150,33 +172,43 @@ class MainActivity : AppCompatActivity() {
 
     private fun hintTime(dialog: AlertDialog, times: Long) {
         object : CountDownTimer(times*1000, 1000) {
-            override fun onTick(p0: Long) {
-
-            }
-
+            override fun onTick(p0: Long) { }
             override fun onFinish() {
                 dialog.dismiss()
             }
         }.start()
     }
 
+    private fun lotteryAnimSwitch(): Boolean {
+        val sharedLogin = getSharedPreferences(GlobalVariable.login, MODE_PRIVATE)
+        val switch_anim = sharedLogin.getBoolean(GlobalVariable.anim_switch, true)
+
+        return switch_anim
+    }
+
     private fun lotteryAnim() {
         lotteryTouchFlag = true //確認已按下抽獎紐
 
-        if (nullDataFlag == false) {
-            val AnimLotteryActivity = Intent(this, AnimLotteryActivity::class.java)
-            startActivity(AnimLotteryActivity)  //跳到抽獎動畫
+        if (nullDataFlag == false) {    //判斷項目是否為空值
+            if (lotteryAnimSwitch()) {
+                val AnimLotteryActivity = Intent(this, AnimLotteryActivity::class.java)
+                startActivity(AnimLotteryActivity)  //跳到抽獎動畫
+                overridePendingTransition(R.anim.fade_in, R.anim.no_anim_transition)
+            }else {
+                lotteryAction(true) //按下抽獎按鈕後的畫面
+            }
         }else {
             emptyDataHint()
         }
     }
+
     //抽獎的 開始/結果 畫面顯示 (開始畫面, 結束畫面, 判斷值)
-    private fun lotteryIcon(lotteryFlag: Boolean) {
+    private fun lotteryIcon(lotteryTouchFlag: Boolean) {
         val layout_lottery_result = findViewById<LinearLayout>(R.id.layout_lottery_result)
         val but_lottery = findViewById<Button>(R.id.but_lottery)
         val but_start = findViewById<Button>(R.id.but_start)
 
-        if(lotteryFlag == true) {
+        if(lotteryTouchFlag == true) {
             but_lottery.visibility = View.GONE
             layout_lottery_result.visibility = View.VISIBLE
             but_start.text = getString(R.string.anagin)
@@ -188,44 +220,48 @@ class MainActivity : AppCompatActivity() {
     }
 
     //抽獎的數字的判斷 (彩球, 項目)
-    private fun lotteryAction(lotteryFlag: Boolean) {
+    private fun lotteryAction(lotteryTouchFlag: Boolean) {
         val tV_lottery_result = findViewById<TextView>(R.id.tV_lottery_result)
         val but_lottery_result = findViewById<Button>(R.id.but_lottery_result)
         val balls: Int = LotteryBall().getBallNumber(itemList)
 
-        lotteryIcon(lotteryFlag)
+        if(lotteryTouchFlag) {  //按下抽獎按鈕才抽獎
+            if (itemList.size == 0) {
+                but_lottery_result.text = ""
+                tV_lottery_result.text = getString(R.string.read_error)
 
-        if (itemList.size == 0) {
-            but_lottery_result.text = ""
-            tV_lottery_result.text = getString(R.string.read_error)
+            } else {
+                but_lottery_result.text = balls.toString()
+                tV_lottery_result.text = itemList.get(balls - 1)
+            }
 
-        } else {
-            but_lottery_result.text = balls.toString()
-            tV_lottery_result.text = itemList.get(balls - 1)
+            // 改變彩球的顏色
+            if (balls % 4 == 0) {
+                but_lottery_result.setBackground(
+                    ContextCompat
+                        .getDrawable(this, R.drawable.lotteryball_yellow)
+                )
+            } else if (balls % 4 == 3) {
+                but_lottery_result.setBackground(
+                    ContextCompat
+                        .getDrawable(this, R.drawable.lotteryball_rad)
+                )
+            } else if (balls % 4 == 2) {
+                but_lottery_result.setBackground(
+                    ContextCompat
+                        .getDrawable(this, R.drawable.lotteryball_blue)
+                )
+            } else if (balls % 4 == 1) {
+                but_lottery_result.setBackground(
+                    ContextCompat
+                        .getDrawable(this, R.drawable.lotteryball_green)
+                )
+            }
+            lotteryIcon(lotteryTouchFlag)    //更改彩球狀態
+            this.lotteryTouchFlag = false
         }
 
-        // 改變彩球的顏色
-        if (balls % 4 == 0) {
-            but_lottery_result.setBackground(
-                ContextCompat
-                    .getDrawable(this, R.drawable.lotteryball_yellow)
-            )
-        } else if (balls % 4 == 3) {
-            but_lottery_result.setBackground(
-                ContextCompat
-                    .getDrawable(this, R.drawable.lotteryball_rad)
-            )
-        } else if (balls % 4 == 2) {
-            but_lottery_result.setBackground(
-                ContextCompat
-                    .getDrawable(this, R.drawable.lotteryball_blue)
-            )
-        } else if (balls % 4 == 1) {
-            but_lottery_result.setBackground(
-                ContextCompat
-                    .getDrawable(this, R.drawable.lotteryball_green)
-            )
-        }
+
     }
 
     private fun butAnim() {
@@ -245,6 +281,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun touchSetButton() {
         lotteryTouchFlag = false
+//        setDataFlag = true
         App.addActivity(this)   //將此activity加入list
 
         // intent是用來做介面傳送功能的程式
@@ -255,12 +292,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun touchDataButton() {
         lotteryTouchFlag = false
+        setDataFlag = true
         val but_data = findViewById<Button>(R.id.data_name)
         val DataActivity = Intent(this, DataActivity::class.java)
         val transitionAnim = ActivityOptions.makeSceneTransitionAnimation(this, but_data, "data_trsnsition")
-//        startActivity(DataActivity, transitionAnim.toBundle())
-        startActivity(DataActivity)
-        overridePendingTransition(R.anim.fade_in, R.anim.no_anim_transition)
+        startActivity(DataActivity, transitionAnim.toBundle())
+//        startActivity(DataActivity)
+//        overridePendingTransition(R.anim.fade_in, R.anim.no_anim_transition)
     }
 
     private fun isExit() {
@@ -295,10 +333,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy: ")
-//        if(exitFlag == false) {
-//            System.exit(0)  //確保程式完全退出
-//        }
+//        Log.d(TAG, "onDestroy: ")
     }
 //--------------------------------------------------------------
 }

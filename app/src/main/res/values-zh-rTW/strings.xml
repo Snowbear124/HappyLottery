@@ -22,4 +22,9 @@
     <string name="do_you_want_to_exit">要離開了嗎?</string>
     <string name="no_set_item">未設定獎項</string>
     <string name="not_data_name">你還沒設定檔案名稱!</string>
+    <string name="lottery_animation">"抽獎動畫 "</string>
+    <string name="open_anim">你開啟了抽獎動畫</string>
+    <string name="close_anim">你關閉了抽獎動畫</string>
+    <string name="data_5">檔案 5</string>
+    <string name="data_6">檔案 6</string>
 </resources>

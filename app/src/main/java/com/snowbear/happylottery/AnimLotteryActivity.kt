@@ -17,14 +17,15 @@ class AnimLotteryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_anim_lottery)
-
     }
 
     override fun onStart() {
         super.onStart()
+//        val anim_lottery = findViewById<ImageView>(R.id.anim_lottery)
+//        anim_lottery.setImageResource(R.drawable.avd_lottrey_balls)
 
         val anim_lottery = findViewById<ImageView>(R.id.anim_lottery)
-        anim_lottery.setImageResource(R.drawable.avd_lottrey_balls)
+        anim_lottery.setImageResource(R.drawable.anim_lottery)
         val animLottery = anim_lottery.drawable as AnimatedVectorDrawable
         animLottery.start()
         timer()
@@ -41,5 +42,10 @@ class AnimLotteryActivity : AppCompatActivity() {
                 finish()
             }
         }.start()
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.no_anim_transition, R.anim.fade_out)
     }
 }

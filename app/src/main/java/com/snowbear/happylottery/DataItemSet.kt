@@ -12,7 +12,7 @@ import androidx.appcompat.app.AlertDialog
 
 class DataItemSet : AppCompatActivity() {
     val TAG = DataItemSet::class.java.simpleName
-    var itemCount = GlobalVariable.getItemCount()   //  itemCount = 10
+    var itemCount = GlobalVariable.getItemCount()   //  itemCount = 20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,10 +84,15 @@ class DataItemSet : AppCompatActivity() {
         val shareData_2 = getSharedPreferences(GlobalVariable.data_2, MODE_PRIVATE)
         val shareData_3 = getSharedPreferences(GlobalVariable.data_3, MODE_PRIVATE)
         val shareData_4 = getSharedPreferences(GlobalVariable.data_4, MODE_PRIVATE)
+        val shareData_5 = getSharedPreferences(GlobalVariable.data_5, MODE_PRIVATE)
+        val shareData_6 = getSharedPreferences(GlobalVariable.data_6, MODE_PRIVATE)
 
         val data_state: Int = shareLogin.getInt("data_state", 1)
-        val but_data = findViewById<Button>(R.id.data_name)
-        val dataText: String = but_data.text.toString()
+//        val but_data = findViewById<Button>(R.id.data_name)
+//        val dataText: String = but_data.text.toString()
+
+        val edit_data_name = findViewById<EditText>(R.id.edit_data_name)
+        val dataText: String = edit_data_name.text.toString()
 
         if(dataText != "") {
             if(data_state == 1) {
@@ -118,6 +123,19 @@ class DataItemSet : AppCompatActivity() {
                 saveItem(shareData_4)
                 Log.d(TAG, "Save data 4: ${dataText}")
 
+            }else if(data_state == 5) {
+                if (dataText != "") {
+                    shareData_5.edit().putString("dataName", dataText).apply()
+                }
+                saveItem(shareData_5)
+                Log.d(TAG, "Save data 5: ${dataText}")
+
+            }else if(data_state == 6) {
+                if (dataText != "") {
+                    shareData_6.edit().putString("dataName", dataText).apply()
+                }
+                saveItem(shareData_6)
+                Log.d(TAG, "Save data 6: ${dataText}")
             }
             finish()
         }else {
@@ -135,40 +153,62 @@ class DataItemSet : AppCompatActivity() {
         val shareData_2 = getSharedPreferences(GlobalVariable.data_2, MODE_PRIVATE)
         val shareData_3 = getSharedPreferences(GlobalVariable.data_3, MODE_PRIVATE)
         val shareData_4 = getSharedPreferences(GlobalVariable.data_4, MODE_PRIVATE)
+        val shareData_5 = getSharedPreferences(GlobalVariable.data_5, MODE_PRIVATE)
+        val shareData_6 = getSharedPreferences(GlobalVariable.data_6, MODE_PRIVATE)
 
         val data_state: Int = shareLogin.getInt("data_state", 1)
         Log.d(TAG, "data_state: $data_state")
 
-        val but_data = findViewById<Button>(R.id.data_name)
+//        val but_data = findViewById<Button>(R.id.data_name)
+        val edit_data_name = findViewById<EditText>(R.id.edit_data_name)
         val DATA_1 = getString(R.string.data_1)
         val DATA_2 = getString(R.string.data_2)
         val DATA_3 = getString(R.string.data_3)
         val DATA_4 = getString(R.string.data_4)
+        val DATA_5 = getString(R.string.data_5)
+        val DATA_6 = getString(R.string.data_6)
+
 
         itemAdd(itemCount)
 
         if (data_state == 1) {
             val dataName = shareData_1.getString("dataName", DATA_1)
-            but_data.text = dataName
+//            but_data.text = dataName
+            edit_data_name.setText(dataName)
             getItem(shareData_1)
 
         } else if (data_state == 2) {
             val dataName = shareData_2.getString("dataName", DATA_2)
-            but_data.text = dataName
+//            but_data.text = dataName
+            edit_data_name.setText(dataName)
             getItem(shareData_2)
 
         } else if (data_state == 3) {
             val dataName = shareData_3.getString("dataName", DATA_3)
-            but_data.text = dataName
+//            but_data.text = dataName
+            edit_data_name.setText(dataName)
             getItem(shareData_3)
 
-        } else if (data_state == 4) {
+        }  else if (data_state == 4) {
             val dataName = shareData_4.getString("dataName", DATA_4)
-            but_data.text = dataName
+//            but_data.text = dataName
+            edit_data_name.setText(dataName)
             getItem(shareData_4)
 
+        } else if (data_state == 5) {
+            val dataName = shareData_5.getString("dataName", DATA_5)
+//            but_data.text = dataName
+            edit_data_name.setText(dataName)
+            getItem(shareData_5)
+
+        } else if (data_state == 6) {
+            val dataName = shareData_6.getString("dataName", DATA_6)
+//            but_data.text = dataName
+            edit_data_name.setText(dataName)
+            getItem(shareData_6)
+
         } else {
-            but_data.text = getString(R.string.read_error)
+//            but_data.text = getString(R.string.read_error)
         }
     }
 
@@ -210,6 +250,6 @@ class DataItemSet : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.no_anim_transition, R.anim.fade_out)
+        overridePendingTransition(R.anim.no_anim_transition, R.anim.slide_right_out)
     }
 }

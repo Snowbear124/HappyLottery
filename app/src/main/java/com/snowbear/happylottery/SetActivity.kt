@@ -8,6 +8,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
 class SetActivity : AppCompatActivity() {
@@ -26,6 +27,7 @@ class SetActivity : AppCompatActivity() {
         val set_switch = findViewById<Switch>(R.id.switch_item_re)
 
         butAnim()
+        switchAnimationButtoin()
 
         set_data.setOnClickListener {
             touchDataButton()
@@ -45,6 +47,35 @@ class SetActivity : AppCompatActivity() {
         val DataActivity = Intent(this, DataActivity::class.java)
         startActivity(DataActivity)
         overridePendingTransition(R.anim.fade_in, R.anim.no_anim_transition)
+    }
+
+    private fun switchAnimationButtoin() {
+        val lottery_anim = findViewById<Switch>(R.id.switch_anim)
+        val sharedLogin = getSharedPreferences(GlobalVariable.login, MODE_PRIVATE)
+        val switch_anim = sharedLogin.getBoolean(GlobalVariable.anim_switch, true)
+
+        lottery_anim.isChecked = switch_anim
+
+        //compoundButton -> butView, b -> boolean
+        return lottery_anim.setOnCheckedChangeListener { compoundButton, b ->
+            if(b) Toast.makeText(this, getString(R.string.open_anim), Toast.LENGTH_SHORT).show()
+            else Toast.makeText(this, getString(R.string.close_anim), Toast.LENGTH_SHORT).show()
+
+            sharedLogin
+                .edit()
+                .putBoolean(GlobalVariable.anim_switch, b)
+                .apply()
+        }
+    }
+
+    private fun  switchTest() {
+        val lottery_anim = findViewById<Switch>(R.id.switch_anim)
+        lottery_anim.isChecked = true
+
+        //compoundButton -> butView, b -> boolean
+        return lottery_anim.setOnCheckedChangeListener { compoundButton, b ->
+            //Set switch action
+        }
     }
 
     private fun butAnim() {

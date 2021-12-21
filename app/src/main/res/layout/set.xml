@@ -10,23 +10,21 @@
         android:id="@+id/set_title"
         android:layout_width="@dimen/dp_280"
         android:layout_height="@dimen/dp_60"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
         android:layout_marginTop="42dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/item_set"
-        android:text="@string/set"
         android:gravity="center"
+        android:text="@string/set"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp_28" />
+        android:textSize="@dimen/sp_28"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/set_back"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="330dp"
         android:layout_height="65dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
         android:layout_alignParentBottom = "true"
         android:background="@drawable/button_backup" />
@@ -96,10 +94,45 @@
                 android:text="@string/item_repeat"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_24"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/switch_item_re"
                 app:layout_constraintEnd_toEndOf="@+id/switch_item_re"
                 app:layout_constraintStart_toStartOf="@+id/switch_item_re"
                 app:layout_constraintTop_toTopOf="@+id/switch_item_re" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <Switch
+                android:id="@+id/switch_anim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:switchMinWidth="@dimen/dp_280"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_track"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/switch_tV"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_65"
+                android:gravity="center"
+                android:text="@string/lottery_animation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_24"
+                app:layout_constraintBottom_toBottomOf="@+id/switch_anim"
+                app:layout_constraintEnd_toEndOf="@+id/switch_anim"
+                app:layout_constraintStart_toStartOf="@+id/switch_anim"
+                app:layout_constraintTop_toTopOf="@+id/switch_anim" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

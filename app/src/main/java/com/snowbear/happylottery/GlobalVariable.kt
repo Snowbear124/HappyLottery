@@ -9,7 +9,7 @@ import android.view.View
 class GlobalVariable: Application() {
     companion object {
         //指定變數
-        private var itemCount = 10
+        private var itemCount = 30
 
         //設定變數fun
         fun setItemCount(count: Int) {
@@ -27,6 +27,12 @@ class GlobalVariable: Application() {
         val data_2 = "data_2"
         val data_3 = "data_3"
         val data_4 = "data_4"
+        val data_5 = "data_5"
+        val data_6 = "data_6"
+
+        //sharePre 特定資料名稱
+        val data_state = "data_state"
+        val anim_switch = "lottrey_anim"
     }
 
 

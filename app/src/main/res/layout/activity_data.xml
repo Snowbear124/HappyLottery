@@ -7,18 +7,76 @@
     android:background="@color/OldLace"
     tools:context=".DataActivity">
 
+    <Button
+        android:id="@+id/data_6"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/item_data_name"
+        android:text="DATA 6"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toStartOf="@+id/set_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data_5" />
+
+    <Button
+        android:id="@+id/set_6"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_set"
+        android:text="@string/set"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/data_6" />
+
+    <Button
+        android:id="@+id/data_5"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/item_data_name"
+        android:text="DATA 5"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toStartOf="@+id/set_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data_4" />
+
+    <Button
+        android:id="@+id/set_5"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_set"
+        android:text="@string/set"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/data_5" />
+
     <TextView
         android:id="@+id/data_title"
-        android:transitionName="data_trsnsition"
         android:layout_width="@dimen/dp_280"
         android:layout_height="@dimen/dp_60"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/item_set"
-        android:text="@string/data_set"
-        android:textSize="@dimen/sp_28"
         android:gravity="center"
-        android:textStyle="bold"
+        android:text="@string/data_set"
         android:textColor="@color/black"
+        android:textSize="@dimen/sp_28"
+        android:textStyle="bold"
+        android:transitionName="data_trsnsition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,19 +197,5 @@
         android:textSize="@dimen/sp_28"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/data_4" />
-
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/but_back"
-        android:layout_width="@dimen/dp_185"
-        android:layout_height="@dimen/dp_70"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/button_start"
-        android:text="@string/back"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sp_38"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

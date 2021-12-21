@@ -21,4 +21,9 @@
     <string name="do_you_want_to_exit">Do you want to exit?</string>
     <string name="no_set_item">No set item.</string>
     <string name="not_data_name">You not set data name!</string>
+    <string name="lottery_animation">LOTTERY ANIMATION</string>
+    <string name="open_anim">You open lottery animation.</string>
+    <string name="close_anim">You close lottery animation.</string>
+    <string name="data_5">DATA 5</string>
+    <string name="data_6">DATA 6</string>
 </resources>
