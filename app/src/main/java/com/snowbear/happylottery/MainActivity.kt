@@ -3,6 +3,7 @@ package com.snowbear.happylottery
 import android.app.ActivityOptions
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -11,6 +12,7 @@ import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     //也可以直接用"MainActivity"字串，但用class這個方式不占記憶體空間，會比較好
@@ -25,6 +27,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val logo = findViewById<TextView>(R.id.logo)
+        logo.setTypeface(Typeface.MONOSPACE, Typeface.BOLD_ITALIC)
+
         val but_dataName = findViewById<Button>(R.id.data_name)
         val but_start = findViewById<Button>(R.id.but_start)
         val but_lottery = findViewById<Button>(R.id.but_lottery)
